@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Advanced Image synthesis - Monte-Carlo</title>
+    <title>Advanced Image Processing - Introduction</title>
 
     <meta name="description" content="">
 
@@ -15,26 +15,26 @@
     <!-- Social Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Advanced Image synthesis - Monte-Carlo">
+    <meta name="twitter:title" content="Advanced Image Processing - Introduction">
     <meta name="twitter:description" content="">
 
     
-    <meta property="twitter:image:src" content="">
+    <meta property="twitter:image:src" content="http://localhost:4000">
     
 
     <!-- Social Facebook/Open Graph -->
-    <meta property="og:url" content="/sia-monte-carlo/">
-    <meta property="og:title" content="Advanced Image synthesis - Monte-Carlo">
+    <meta property="og:url" content="http://localhost:4000/aip-td1/">
+    <meta property="og:title" content="Advanced Image Processing - Introduction">
     
-    <meta property="og:image" content="">
+    <meta property="og:image" content="http://localhost:4000">
     
     <meta property="og:description" content="">
     <meta property="og:site_name" content="Arnaud Delpeyroux's blog">
 
     <!-- Social Google+/Schema.org  -->
-    <meta itemprop="name" content="Advanced Image synthesis - Monte-Carlo"/>
+    <meta itemprop="name" content="Advanced Image Processing - Introduction"/>
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/assets/img/blog-image.png"/>
+    <meta itemprop="image" content="http://localhost:4000/assets/img/blog-image.png"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/img/icons/favicon.ico" type="image/x-icon" />
@@ -62,8 +62,9 @@
     <meta name="theme-color" content="#5d4d7a">
 
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="/sia-monte-carlo/">
-    <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="/feed.xml" />
+     <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="canonical" href="http://localhost:4000/aip-td1/">
+    <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="http://localhost:4000/feed.xml" />
 
     <script type="text/javascript" async
 	    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -99,7 +100,7 @@
     
     <ul>
       <li><span>1</span></li>
-      <li><span> /sia-monte-carlo/</span></li>
+      <li><span> /aip-td1/</span></li>
       <li><span>⌘ blogspace λ </span></li>
       <li><span>* Menu</span></li>
     </ul>
@@ -119,7 +120,7 @@
         <li>
           <span class="counter-menu">1</span>
           <svg viewBox="0 0 50 50" class="icon-arrow-menu"><use xlink:href="#icon-right-arrow"></use></svg>
-          <a href="/"> home</a>
+          <a href="http://localhost:4000/"> home</a>
         </li>
       
 
@@ -129,7 +130,7 @@
         <li>
           <span class="counter-menu">2</span>
           <svg viewBox="0 0 50 50" class="icon-arrow-menu"><use xlink:href="#icon-right-arrow"></use></svg>
-          <a href="/posts"> my posts</a>
+          <a href="http://localhost:4000/posts"> my posts</a>
         </li>
       
 
@@ -139,7 +140,7 @@
         <li>
           <span class="counter-menu">3</span>
           <svg viewBox="0 0 50 50" class="icon-arrow-menu"><use xlink:href="#icon-right-arrow"></use></svg>
-          <a href="/series"> series</a>
+          <a href="http://localhost:4000/series"> series</a>
         </li>
       
 
@@ -149,7 +150,7 @@
         <li>
           <span class="counter-menu">4</span>
           <svg viewBox="0 0 50 50" class="icon-arrow-menu"><use xlink:href="#icon-right-arrow"></use></svg>
-          <a href="/tags"> tags</a>
+          <a href="http://localhost:4000/tags"> tags</a>
         </li>
       
 
@@ -159,7 +160,7 @@
         <li>
           <span class="counter-menu">5</span>
           <svg viewBox="0 0 50 50" class="icon-arrow-menu"><use xlink:href="#icon-right-arrow"></use></svg>
-          <a href="/about"> about me</a>
+          <a href="http://localhost:4000/about"> about me</a>
         </li>
       
 
@@ -183,6 +184,26 @@
         <div class="tree-posts">
 
     <h3>*Posts*</h3>
+
+    
+
+    <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+        <div class="content">
+            <a title="Open the post" href="/aip-td1/">
+                <h2 class="post-title" itemprop="name">Advanced-Image-Processing---Introduction.md</h2>
+            </a>
+        </div>
+    </article>
+
+    
+
+    <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+        <div class="content">
+            <a title="Open the post" href="/sia-td1-sampling/">
+                <h2 class="post-title" itemprop="name">Advanced-Image-synthesis---Sampling.md</h2>
+            </a>
+        </div>
+    </article>
 
     
 
@@ -231,191 +252,130 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
             
                 <div class="time">
-                    <time itemprop="datePublished" datetime="2017-09-06 11:30:00 +0200">06 Sep 2017</time>
+                    <time itemprop="datePublished" datetime="2017-09-08 14:00:00 +0200">08 Sep 2017</time>
                 </div>
             
-            <h1 class="post-title" itemprop="name">Advanced Image synthesis - Monte-Carlo</h1>
+            <h1 class="post-title" itemprop="name">Advanced Image Processing - Introduction</h1>
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <p><a href="http://www.labri.fr/perso/pbenard/teaching/sia/slides/MC.pdf">Pdf du cours</a></p>
+                <p><a href="https://moodle1.u-bordeaux.fr/course/view.php?id=2327">Site de l’UE</a></p>
 
-<h2 id="integration-de-monte-carlo">Integration de Monte-Carlo</h2>
+<p><a href="https://moodle1.u-bordeaux.fr/pluginfile.php/311870/mod_resource/content/0/TemplateMatching.pdf">Lecture (pdf file)</a></p>
 
-<p>On va calculer des integrales :</p>
+<p><a href="https://moodle1.u-bordeaux.fr/mod/folder/view.php?id=107742">Data for practice</a></p>
 
-<h3 id="estimation-de-pi--aire-du-disque-unitaire-">Estimation de Pi : Aire du disque unitaire ?</h3>
+<h2 id="template-matching">Template Matching</h2>
 
-<p>On vient prendre un carré contenant un quart du disque et on viens distribuer des echantillons dans le carré. En faisant le rapport entre les echantillons dans le quart de disque par rapport a ceux dans le carré on obtiens Pi.</p>
+<h3 id="image-self-similarity">Image self-similarity</h3>
 
-<p>Precision correcte de Pi a 4 decimales : 100 000 000 000 d’échantillons.</p>
+<p>Toute image naturelle contient des information redondantes (ciels, murs, …).</p>
 
-<h3 id="integration-en-1d-">Integration en 1D :</h3>
+<p><strong>Objectifs</strong> : Utiliser ces redondances pour restaurer ou pour pleins d’autres usages</p>
 
-<p>$$ I = \int _a ^b f(x) dx $$</p>
-
-<p>Méthodes de Simpson  : Faire la somme des rectangle en utilisant des pas sur la dimmension. On peut utiliser des trapèzes</p>
-
-<p><img src="https://media.giphy.com/media/3oEjHVJo8Y7J9GKj3G/giphy.gif" alt="trapéze" /></p>
-
-<h4 id="estimateur-de-monte-carlo-">Estimateur de monte-carlo :</h4>
-
-<p>$$ \langle I ^N \rangle = (b - a)\frac{1}{N} \sum _{i = 0} ^{N - 1} f(X_i)  $$</p>
-
-<p>avec <script type="math/tex">X_i = a + \epsilon(b - a)</script></p>
-
-<p>On viens prendre N échantillons aléatoire, on evalue leurs valeurs et on calcule l’aire, on vient faire la moyenne de ces aires.</p>
-
-<h3 id="variable-aléatoire-discrete-">Variable aléatoire discrete :</h3>
-
-<p>Probabilité pi associé à chaque événement xi</p>
-
-<p><strong>Esperance</strong> : Sommes de tout les evenements possibles de la probabilité fois l’evenement.</p>
-
-<p>$$ E[x] = \sum _i p _i x _i $$</p>
-
-<p><strong>Variance</strong> : carré de l’ecart type. L’esperance de la distance a l’esperance au carré.</p>
-
-<p>$$ \sigma ^2 = E[(x - E[x]) ^2] = \sum _i (x _i - E[x])^2 p _i $$</p>
-
-<p>$$ \sigma ^2 = E[x ^2] - (E[x])^2 = \sum _i x _i ^2 p _i - (\sum _i x _i p_i)^2 $$</p>
-
-<h4 id="proprietes-">Proprietes :</h4>
-
+<p><strong>Problématiques</strong> :</p>
 <ul>
-  <li><strong>Esperance</strong> :</li>
+  <li>Comment detecter une similarité ? comment mesurer cette similarité ?</li>
+  <li>Comment on trouve deux patch similaires ?</li>
+  <li>Qu’en fait on ?</li>
 </ul>
 
-<p>$$ E(x + y) = E[x] + E[y] $$</p>
+<h3 id="similarity-metrics">Similarity Metrics</h3>
 
-<p>$$ E(ax) = a E[x] $$</p>
+<p><strong>Cross Correlation</strong> :</p>
+
+<p>Soit P1 et P2 patches carrés independants. La cross-correlation se calcule de la maniere suivante :</p>
+
+<p>$$ CC(P _1, P_2) = \sum _{k = 1} ^w \sum _{l = 1} ^w P _1 (k,l) P _2 (k,l) $$</p>
+
+<p>Plus CC est grand plus les patch <script type="math/tex">P _1</script> et <script type="math/tex">P _2</script> sont similaires.
+	Mais si on as des pixel très clair dans <script type="math/tex">P _1</script> ou <script type="math/tex">P _2</script> alors on tends ver le maximum</p>
+
+<p><strong>Zero-mean Normalized Cross-correlation</strong></p>
+
+<p>Pour gérer les changements d’intensité, on normalise les patch.</p>
 
 <ul>
-  <li><strong>Variance</strong> :</li>
+  <li>Zero-mean :</li>
 </ul>
 
-<p>$$ \sigma ^2 [x + y] = \sigma ^2 [x] + \sigma ^2 [y] + 2 Cov[x,y] $$</p>
+<script type="math/tex; mode=display">ZCC(P _1, P _2) = \sum _{(k,l)} (P _1 (k,l) - \overline{P _1}) (P _2 (k,l) - \overline{P _2})</script>
 
-<p>Avec <script type="math/tex">Cov(x,y) = E[xy] - E[x]E[y]</script></p>
-
-<p>$$ \sigma ^2[ax] = a ^2 \sigma ^2 [x] $$</p>
-
-<h4 id="fonction-de-va-discretes-">Fonction de v.a. discretes :</h4>
-
-<p>Soit f(x) la fonxtion ou x prends la valeur xi avec proba pi =&gt; aussi une variable aléatoire</p>
-
-<p><strong>Espérance</strong> :</p>
-
-<p>$$ E[f(x)] = \sum _{i = 1} p _i f(x _i) $$</p>
-
-<p><strong>Variance</strong> :</p>
-
-<p>$$ \sigma ^2 = E[(f(x) - E[f(x)]) ^2] $$</p>
-
-<h4 id="variables-aléatoire-à-densité">Variables aléatoire à densité</h4>
-
-<p><strong>PDF : Densiré de probabilité - <script type="math/tex">p(x)</script></strong> :</p>
-
-<p>$$ Pr(a \le x \le b) = \int _a ^b p(x)dx $$</p>
-
-<p>p(x) probabilité que x soit dans l’intervalle plus un delta x.</p>
-
-<p><strong>CDF : Fonction de répartition - P(y)</strong> :</p>
-
-<p>$$ P(y) = Pr(x \le y) = \int _{- \infty} ^y p(x)dx $$</p>
-
-<p>Probabilité que x soit inferieur a y.</p>
-
-<h4 id="variables-aléatoire-continue-">Variables aléatoire continue :</h4>
-
-<p>PDF en haut et CDF en bas pour une loi normale :</p>
-
-<p>Loi normale :</p>
-
-<p><img src="/assets/img/vac.png" alt="vac image" /></p>
-
-<p>Proprietés : (formula)</p>
 <ul>
-  <li><script type="math/tex">\forall x, p(x) \ge 0</script></li>
-  <li><script type="math/tex">\int _{- \infty} ^\infty p(x)dx = 1</script></li>
-  <li><script type="math/tex">p(x) = \frac{dP(x)}{dx}</script></li>
+  <li>Standard unit equal to 1 :</li>
 </ul>
 
-<p>$$ Pr(a \le x \le b) = P(b) - P(a) = \int _a ^b p(x)dx $$</p>
+<script type="math/tex; mode=display">ZNCC(P _1, P _2) = \frac{\sum _{(k,l)} (P _1 (k,l) - \overline{P _1}) (P _2 (k,l) - \overline{P _2})}{\sqrt{\sum _{(k,l)} (P _1 (k,l) - \overline{P _1})^2} \sqrt{\sum _{(k,l)} (P _2 (k,l) - \overline{P _2})^2} }</script>
 
-<h4 id="variables-aléatoires-à-densité">Variables aléatoires à densité</h4>
+<p>Donne un résultat entre -1 (aucune similitude) à 1 (similitude totale).</p>
 
-<p><strong>Esperance</strong> :</p>
+<p><strong>Recall : Norm in <script type="math/tex">l _p</script> space</strong></p>
 
-<p>$$ E[x] = \int _{- \infty} ^\infty x p(x) dx $$</p>
+<p>$$ \Vert x \Vert  _p = (\vert x _1 \vert ^p + \vert x _2 \vert ^p + \dots + \vert x _n \vert ^p) ^{\frac{1}{p}} $$</p>
 
-<p>$$ E[f(x)] = \int _{- \infty} ^\infty f(x) p(x) dx $$</p>
+<p><strong>Sum of Square Differences (SSD)</strong></p>
 
-<p><strong>Variance</strong> : (formula)</p>
+<p>$$ SSD(P _1, P _2) = \sum _{(k,l)} (P _1 (k,l) - P _2 (k,l))^2 $$</p>
 
-<h4 id="somme-pondérée-de-v-a">Somme pondérée de v. a.</h4>
+<p>Metrique la plus populaire.</p>
 
-<p>Soient N variables aléatoire, avec xi des variables indépendantes identiquement distribuées suivant la mmêe loi p(x) et :</p>
+<p><strong>Gaussian weigthed SSD</strong></p>
 
-<p>$$ G = \sum _{j = 1} ^N w _j g(x _j) = \sum _{j = 1} ^N w _j g _j (x) $$</p>
+<p>$$ SSDG(P _1, P _2) = \sum _{(k,l)} w(k,l) (P _1 (k,l) - P _2 (k,l))^2$$</p>
 
-<p><strong>Espérance</strong> :</p>
+<p><strong>Sum of absolute differences SAD</strong></p>
 
-<p>$$ E[G] =  \sum _{j = 1} ^N w _j E[g _j (x)] $$</p>
+<p>$$ SAD(P _1, P _2) = \sum _{(k,l)} \vert P _1 (k,l) - P _2 (k,l) \vert ^2 $$</p>
 
-<p>Si <script type="math/tex">w _j = \frac{1}{N} \forall j</script> , <script type="math/tex">G = \frac{1}{N} \sum _{j = 1} ^N g _j (x)</script></p>
+<p><strong>Many others</strong></p>
 
-<p>$$ E[G] = \dots = E[g(x)] $$</p>
+<p>Utilisation de SSD ou SAD sur des couleurs.</p>
 
-<p>Car comme ils suivent tous la même loi de probabilité et qu’ils ont la même distribution, alors leurs espereance sera la même.</p>
-
-<p>G devient donc un estimateur de l’espérance de g(x)</p>
-
-<p><strong>Variance</strong> :</p>
-
-<p>$$ \sigma ^2[G(x)] = \dots = \frac{\sigma ^2[g(x)]}{N} $$</p>
-
-<p>Plus N est grand, meilleur G devient un estimateur de l’esperance. Sa deviation standard sigma diminu en racine de N.</p>
-
-<h3 id="estimateur-de-monte-carlo">Estimateur de Monte-Carlo</h3>
-
-<p>Estimation de <script type="math/tex">I = \int _a ^b f(x)dx</script> à l’aide de N échantillons tirés aléatoirements dans <script type="math/tex">[a,b]</script> selon la densité <script type="math/tex">p(x)</script></p>
-
-<p>$$ \langle I ^N \rangle = \frac{}{} \sum _{i = 0} ^{N -1} \frac{f(x _i)}{p(x _i)} $$</p>
-
-<h4 id="esperance-">Esperance :</h4>
-<p>$$ E[\langle I ^N \rangle] = \dots = I  $$</p>
-
-<h4 id="variance-">Variance :</h4>
-<p>$$ \sigma ^2 [\langle I ^N \rangle] = \frac{1}{N} \int (\frac{f(x)}{p(x)} - I) ^2 p(x)dx $$</p>
-
-<p>==&gt; Convergence de l’estimateur de racine de N
-==&gt; 4 fois plus d’échantillons pour diminué l’erreur par 2</p>
-
-<p>Estimateur de la variance : Avec les me N échantillons, on peut estimer la variance de &lt;I^N&gt; avec l’estimateur :</p>
-
-<p>$$ \langle \sigma ^2 [ \langle I ^N \rangle ] \rangle = \frac{\frac{1}{N} \sum _{i = 1} ^N (\frac{f(x _i)}{p(x _i)})^2 - (\frac{1}{N} \sum _{i = 1} ^N \frac{f(x _i)}{p(x _i)})^2}{N - 1} $$</p>
-
-<p>On utilise les mêmes echantillons pour estimer la variance de l’estimateur.</p>
-
-<h2 id="bilan">Bilan</h2>
-
-<p>Etapes : 
-  1 Générer N echantillons delon la PDF 
-  2 Evaluer la fonction à interer en ces échantillons
-  3 Moyenner ces évaluation en divisant par la PDF</p>
-
-<p>Pros :</p>
+<p>D’autres possibilités :</p>
 <ul>
-  <li>Pas de contraintes sur la fonction</li>
-  <li>Même convergence quelle que soit la dimenssion</li>
-  <li>Implementation simple</li>
+  <li>sur les gradients : <script type="math/tex">SAD(\nabla P _1, \nabla P _2)</script></li>
+  <li>sur les histogrames</li>
+  <li>over Histograms of Oriented Gradients (HoG), SIFT ou SURF</li>
 </ul>
 
-<p>Cons :</p>
+<h3 id="aplications-ajouter-des-images">Aplications (ajouter des images)</h3>
+
 <ul>
-  <li>Convergence lente</li>
-  <li>Implementation <strong>efficace</strong> pas toujours facile</li>
+  <li>Synthese de texture</li>
+  <li>Inpainting</li>
+  <li>Colorisation</li>
+  <li>Super-Resolution</li>
+  <li>Style-transfer</li>
+  <li>Stereo</li>
+  <li>Denoising</li>
 </ul>
+
+<h3 id="practice">Practice</h3>
+
+<ol>
+  <li>Study  Matlab Tutorial or Mex Tutorials if you prefer programming in C</li>
+  <li>Template Matching :
+    <ol>
+      <li>Extract randomly 4 small square templates (size 9x9 for instance) from the two texture images provided. Save these windows.</li>
+      <li>Compute the similarity between these templates using different metrics (SSD, ZNCC, SAD). Analyze the results. Note : in matlab you should avoid as most as possible using loops in your code.</li>
+    </ol>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-matlab" data-lang="matlab"><span class="c1">% Matlab function for SSD metric</span>
+<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ssd</span><span class="p">(</span> <span class="n">w_first</span><span class="p">,</span> <span class="n">w_second</span> <span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">w_first</span> <span class="o">-</span> <span class="n">w_second</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="c1">% Matlab function for ZNCC metric</span>
+<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">zncc</span> <span class="p">(</span> <span class="n">w_first</span><span class="p">,</span> <span class="n">w_second</span> <span class="p">)</span> 
+  
+<span class="k">end</span>
+
+<span class="c1">% Matlab function for SAD metric</span>
+<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sad</span> <span class="p">(</span> <span class="n">w_first</span><span class="p">,</span> <span class="n">w_second</span> <span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="nb">norm</span><span class="p">(</span><span class="n">w_first</span> <span class="o">-</span> <span class="n">w_second</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="k">end</span></code></pre></figure>
+
 
             </article>
 
@@ -423,17 +383,17 @@
 
     <h3>Share</h3>
 
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20/sia-monte-carlo/%20via%20&#64;&hashtags=semester9,sia,montecarlo,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/aip-td1/%20via%20&#64;&hashtags=semester9,iap,image,processing,mathlab,octave,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
 
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=/sia-monte-carlo/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/aip-td1/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
 
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=/sia-monte-carlo/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/aip-td1/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -455,7 +415,7 @@
         disqus_loaded = true;
         var disqus_shortname = 'arnaud-delpeyroux-blog';
         var disqus_title = '';
-        var disqus_url = '/sia-monte-carlo/';
+        var disqus_url = '/aip-td1/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

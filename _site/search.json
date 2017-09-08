@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Advanced Image Processing - Introduction",
+      "category" : "Semester 9Advanced Image ProcessingAdvanced Image Processing Practice",
+      "tags"     : "semester9, iap, image, processing, mathlab, and octave",
+      "url"      : "/aip-td1/",
+      "date"     : "08 Sep 2017"
+    } ,
+  
+    {
+      "title"    : "Advanced Image synthesis - Sampling",
+      "category" : "Semester 9Advanced Image Synthesis PracticeAdvanced Image Synthesis",
+      "tags"     : "semester9, sia, sampling, montecarlo, raycasting, 3D, and C++",
+      "url"      : "/sia-td1-sampling/",
+      "date"     : "07 Sep 2017"
+    } ,
+  
+    {
       "title"    : "Advanced Image synthesis - Monte-Carlo",
       "category" : "Semester 9Advanced Image Synthesis CoursesAdvanced Image Synthesis",
       "tags"     : "semester9, sia, and montecarlo",

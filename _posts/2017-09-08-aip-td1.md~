@@ -1,0 +1,128 @@
+---
+layout: post
+title:  "Advanced Image Processing - Introduction"
+image: ''
+date:   2017-09-08 14:00:00 +0200
+tags: 
+- semester9 
+- iap
+- image
+- processing
+- mathlab
+- octave
+description: ''
+categories:
+- Semester 9
+- Advanced Image Processing
+- Advanced Image Processing Practice
+---
+
+[Site de l'UE](https://moodle1.u-bordeaux.fr/course/view.php?id=2327)
+
+[Lecture (pdf file)](https://moodle1.u-bordeaux.fr/pluginfile.php/311870/mod_resource/content/0/TemplateMatching.pdf)
+
+[Data for practice](https://moodle1.u-bordeaux.fr/mod/folder/view.php?id=107742)
+
+## Template Matching
+
+### Image self-similarity
+
+Toute image naturelle contient des information redondantes (ciels, murs, ...).
+
+**Objectifs** : Utiliser ces redondances pour restaurer ou pour pleins d'autres usages
+
+**Problématiques** :
+  * Comment detecter une similarité ? comment mesurer cette similarité ?
+  * Comment on trouve deux patch similaires ?
+  * Qu'en fait on ?
+  
+### Similarity Metrics 
+
+**Cross Correlation ** : 
+
+Soit P1 et P2 patches carrés independants. La cross-correlation se calcule de la maniere suivante : 
+
+add formulas
+
+A la fin on normalise tout entre -1 (non similaire) et 1 (similaire)
+
+**Recall : Norm in $$l _p $$ space**
+
+\$\$ ||x|| _p = (todo ...) ^{\frac{1}{p}} $$
+
+
+**Sum of Square Differences (SSD)**
+
+add formulas
+
+Metrique la plus populaire.
+
+**Gaussian weigthed SSD**
+
+add formula
+
+**Sum of absolute differences SAD**
+
+add formula
+
+**Many others**
+
+Utilisation de SSD ou SAD sur des couleurs.
+
+D'autres possibilités : 
+  * sur les gradients : $$ add me $$
+  * sur les histogrames
+  * over Histograms of Oriented Gradients (HoG), SIFT ou SURF
+  
+### Aplications (ajouter des images) 
+
+**Synthese de texture**
+
+A artir d'une partie de texture, generer une texture plus grandes.
+
+**Inpainting** 
+
+Ajout ou supression d'une partie de l'image.
+
+**Colorisation**
+
+**Super-Resolution**
+
+**Style-transfer**
+
+**Stereo**
+
+**Denoising**
+
+Avec par exemple l'utilisation du NL-means
+
+### Practice 
+
+  1. Study  Matlab Tutorial or Mex Tutorials if you prefer programming in C
+  2. Template Matching
+    1. Extract randomly 4 small square templates (size 9x9 for instance) from the two texture images provided. Save these windows.
+    2. Compute the similarity between these templates using different metrics (SSD, ZNCC, SAD). Analyze the results. Note : in matlab you should avoid as most as possible using loops in your code. 
+	
+{% highlight matlab %}
+
+% Matlab function for SSD metric
+function result = ssd( w_first, w_second )
+  result = sum(sum(sum((w_first - w_second).^2,1), 2), 3);
+end
+
+% Matlab function for ZNCC metric
+function result = zncc ( w_first, w_second ) 
+  
+end
+
+% Matlab function for SAD metric
+function result = sad ( w_first, w_second )
+  
+end
+
+% Matlab function for CC metric
+function result = cc ( w_first, w_second )
+  
+end
+
+{% endhighlight %}
