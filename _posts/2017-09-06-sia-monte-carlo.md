@@ -14,11 +14,14 @@ categories:
 - Advanced Image Synthesis
 ---
 
+
 [Pdf du cours](http://www.labri.fr/perso/pbenard/teaching/sia/slides/MC.pdf)
+
+# Séance 1 du 06/09/2017
 
 ## Integration de Monte-Carlo
 
-On va calculer des integrales : 
+On va calculer des intégrales : 
 
 ### Estimation de Pi : Aire du disque unitaire ?
 
@@ -173,9 +176,9 @@ On utilise les mêmes echantillons pour estimer la variance de l'estimateur.
 ## Bilan
 
 Etapes : 
-  1 Générer N echantillons delon la PDF 
-  2 Evaluer la fonction à interer en ces échantillons
-  3 Moyenner ces évaluation en divisant par la PDF
+  1. Générer N echantillons delon la PDF 
+  2. Evaluer la fonction à interer en ces échantillons
+  3. Moyenner ces évaluation en divisant par la PDF
   
 Pros : 
   * Pas de contraintes sur la fonction
@@ -185,3 +188,142 @@ Pros :
 Cons : 
   * Convergence lente
   * Implementation **efficace** pas toujours facile
+
+
+# Séance 2 du 13/09/2017
+
+## Comment generer les echantillons selon une PDF
+
+### Méthode de la transformée inverse
+
+**Cas discret** : 
+
+On veut choisir $$ x _i $$ avec une probabilité $$ p _i $$ 
+
+La CDF discrete associé a pi vaut : $$ P _i = \sum _{j = 1} ^i p _j $$
+
+Tirer un nomre aléatoire $$ \xi $$  uniformement sur [0, 1[
+
+Trouver k tel que : 
+
+ADD THINGS
+
+==> Probabilité que $$ \xi $$ 
+
+
+Calcul de la CDF discrete en O(N)
+Recherche de k en O(log2(N))
+
+**Cas continue** : idem ! $$ y = P ^{-1} (\xi) $$
+
+==> Necessité d'inverser la CDF ... pas toujours possible)
+
+### En plus haiutes dimension ?
+
+Si densité séparable : $$ p(x, y) = p _x (x) p _y (y) $$ .On a donc un échantillonage indépendant ID de $$ p _x $$ et $$ p _y $$
+
+Sinon, calcul de la densité marginale : 
+
+\$\$ p(x) = \int p(x,y)dy $$
+
+Et de la densité conditionelle : 
+
+\$\$ p(y|x) = \frac{p(x,y)}{p(x)} $$ 
+
+Et echantillonage independant ID de $$ p(x) $$ et $$ p(x|y) $$
+
+### Méthode de rejet 
+
+Si la valeur maximale de $$p(x)$$ dans $$ [a,b]$$ est M, alors considerer la fonction 2D dans $$[a,b] x [O,M]$$
+
+L'echantilloner uniformement en $$(x,y)$$ et rejetter les échantillons si $$p(x) < y$$.
+
+Pros : 
+  * Valide pour toute PDF
+  * en toute dimension
+
+Cons :
+  * potentiellement ineficace
+
+# Comment accelerer la convergence 
+
+## Reductionb de la variance 
+
+Choisir la PDF pour controller la vitesse de convergence.
+
+### Echantillonage préférentiel 
+
+**Idée** : echantilloner selon ine PDF p(x) non-uniforme pour minimiser la variance de l'estimateur.
+
+On peut montrer que l'optimum vaut : 
+
+\$\$ p(x) = \frac{|f(x)|}{\int f(x)dx} $$
+
+**Probleme** : on ne sait pas intégrer $$f$$ ...
+
+### Stratégies d'echantillonage
+
+  1. Stratification
+  2. Quasi-Monte-Carlo
+  
+### Stratification
+
+Proprietes désirées
+
+  * Distribution uniforme sur la surace
+  * distribution uniforme apres projection sur les axes
+  * ==> Maximiser la plus petite distance entre 2 échantillons pour eviter les zones ...
+  
+**Régulier**
+
+Distribuer sur une grille réguliere
+  * échantillons corrélés
+  * aliasing : la régularité se voit dans l'image
+  
+**Aléatoire uniforme**
+
+Trier uniformement dans $$[0,1[ x [0,1[$$
+  * remplace l'aliasing par du bruit
+  * nécessite moins d'echantillons
+  * localement pas uniforme
+  
+**Stratified sampling**
+
+  1. Subdiviser le domaine en sous-regions sans recouvrement
+  2. Trier un échantillon par stratum
+     * reduit les agrégats, mais pas toujours uniforme
+	 * 
+	 
+**Latin Hypercube Sampling (LHS)**
+
+  1. Generer un echantillon par cellule de la diagonale
+  2. Brassage aléatoire des echantillons dans chaque dimension
+     * distribution reste uniforme selon les axes
+	 * permet de generer un nombre arbitraire d'echantillons
+	 
+Mais pas de garantie quant a l'uniformité globale des echantillons 2D.
+
+**en plus haute dimensions**
+
+Generer $$n ^d$$ echantillons 
+  * d = 2 : Surface
+  * d = 3 : surface + temps
+  * d = 5 : pixel + temps + lentille
+  
+Au lieu de generer $$n ^5$$ echantillons, generer $$ n^2 + n + n ^2$$ echantillons et les combiner aléatoirement.
+
+**Poisson disk sampling**
+
+Distribution des photorécepteurs de la rétine
+
+Distribution aléatoire, mais distance minimum entre 2 échantillons
+
+*Dart Throwing*
+  * générer un echantillon aléatoirement et tester s'il est valide
+  * convergence non garantie
+  
+*Best-candidates*
+
+  * *Approximation* : 
+    * génerer aléatoirement k candidats
+	* garder celui étant le plus éloigné de tous les précédents

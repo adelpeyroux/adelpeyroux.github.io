@@ -5,8 +5,8 @@
     <description>Arnaud Delpeyroux's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Sep 2017 18:33:05 +0200</pubDate>
-    <lastBuildDate>Fri, 08 Sep 2017 18:33:05 +0200</lastBuildDate>
+    <pubDate>Wed, 13 Sep 2017 12:32:19 +0200</pubDate>
+    <lastBuildDate>Wed, 13 Sep 2017 12:32:19 +0200</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -69,7 +69,7 @@
     
       <item>
         <title>Advanced Image synthesis - Monte-Carlo</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/sia/slides/MC.pdf&quot;&gt;Pdf du cours&lt;/a&gt;&lt;/p&gt; &lt;h2 id=&quot;integration-de-monte-carlo&quot;&gt;Integration de Monte-Carlo&lt;/h2&gt; &lt;p&gt;On va calculer des integrales :&lt;/p&gt; &lt;h3 id=&quot;estimation-de-pi--aire-du-disque-unitaire-&quot;&gt;Estimation de Pi : Aire du disque unitaire ?&lt;/h3&gt; &lt;p&gt;On vient prendre un carré contenant un quart du disque et on viens distribuer des echantillons dans le carré. En faisant le rapport entre les echantillons dans le quart de disque par rapport a ceux dans le carré on obtiens Pi.&lt;/p&gt; &lt;p&gt;Precision correcte de Pi a 4 decimales : 100 000 000 000 d’échantillons.&lt;/p&gt; &lt;h3 id=&quot;integration-en-1d-&quot;&gt;Integration en 1D :&lt;/h3&gt; &lt;p&gt;$$ I = \int _a ^b f(x) dx $$&lt;/p&gt; &lt;p&gt;Méthodes de Simpson : Faire la somme des...</description>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/sia/slides/MC.pdf&quot;&gt;Pdf du cours&lt;/a&gt;&lt;/p&gt; &lt;h1 id=&quot;séance-1-du-06092017&quot;&gt;Séance 1 du 06/09/2017&lt;/h1&gt; &lt;h2 id=&quot;integration-de-monte-carlo&quot;&gt;Integration de Monte-Carlo&lt;/h2&gt; &lt;p&gt;On va calculer des intégrales :&lt;/p&gt; &lt;h3 id=&quot;estimation-de-pi--aire-du-disque-unitaire-&quot;&gt;Estimation de Pi : Aire du disque unitaire ?&lt;/h3&gt; &lt;p&gt;On vient prendre un carré contenant un quart du disque et on viens distribuer des echantillons dans le carré. En faisant le rapport entre les echantillons dans le quart de disque par rapport a ceux dans le carré on obtiens Pi.&lt;/p&gt; &lt;p&gt;Precision correcte de Pi a 4 decimales : 100 000 000 000 d’échantillons.&lt;/p&gt; &lt;h3 id=&quot;integration-en-1d-&quot;&gt;Integration en 1D :&lt;/h3&gt; &lt;p&gt;$$ I = \int _a ^b f(x) dx $$&lt;/p&gt; &lt;p&gt;Méthodes de Simpson...</description>
         <pubDate>Wed, 06 Sep 2017 11:30:00 +0200</pubDate>
         <link>http://localhost:4000/sia-monte-carlo/</link>
         <guid isPermaLink="true">http://localhost:4000/sia-monte-carlo/</guid>
