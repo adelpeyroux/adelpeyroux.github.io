@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Virtual Reality and Augmented Reality - Course 1",
+      "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Courses",
+      "tags"     : "semester9 and rvra",
+      "url"      : "/rvra-course-1/",
+      "date"     : "15 Sep 2017"
+    } ,
+  
+    {
+      "title"    : "Animated Image and Video Indexing - Lab 1",
+      "category" : "Semester 9Animated Image and Video IndexingAnimated Image and Video Indexing Labs",
+      "tags"     : "semester9, aivi, C++, opencv, computer vision, and gnuplot",
+      "url"      : "/aivi-lab1/",
+      "date"     : "14 Sep 2017"
+    } ,
+  
+    {
       "title"    : "Advanced Image Processing - Introduction",
       "category" : "Semester 9Advanced Image ProcessingAdvanced Image Processing Practice",
       "tags"     : "semester9, iap, image, processing, mathlab, and octave",
