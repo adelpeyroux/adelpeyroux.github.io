@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Virtual Reality and Augmented Reality - Practice 1",
+      "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Practices",
+      "tags"     : "semester9, rvra, webGL, and three.js",
+      "url"      : "/rvra-td1/",
+      "date"     : "17 Sep 2017"
+    } ,
+  
+    {
       "title"    : "Virtual Reality and Augmented Reality - Course 1",
       "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Courses",
       "tags"     : "semester9 and rvra",
