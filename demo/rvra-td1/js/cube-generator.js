@@ -3,16 +3,16 @@ function CubeGenerator (oa) {
 }
 
 CubeGenerator.prototype.setOA = function(texturedCube) {
-  if (texturedCube.constructor.name === "TexturedCube")
-    this.oa = texturedCube;
+  this.oa = texturedCube;
+
+  return this;
 };
 
 CubeGenerator.prototype.getOne = function () {
   let the_one = this.oa.clone();
-  //the_one.mesh.geometry = this.oa.mesh.geometry.clone();
 
-  let mesh_id = the_one.mesh.id;
-  let mesh_geom = the_one.mesh.geometry;
+  let mesh_id = the_one.id;
+  let mesh_geom = the_one.geometry;
   
   applyFaceColor(mesh_geom, mesh_id);
 

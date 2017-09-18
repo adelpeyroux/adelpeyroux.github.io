@@ -1,8 +1,5 @@
-function TexturedCube (textures) {
-  
-  this.mesh = {};
-
-  if (textures) { 
+THREE.TexturedCube = function(textures) {
+  if (textures) {
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let materials = [];
     
@@ -14,26 +11,10 @@ function TexturedCube (textures) {
       }
     }
 
-    this.mesh = new THREE.Mesh(geometry, materials);
-    this.mesh.geometry = geometry;
+    THREE.Mesh.call(this, geometry, materials);
+  } else {
+    THREE.Mesh.call(this);
   }
-}
-
-TexturedCube.prototype.clone = function () {
-  let copy = new TexturedCube();
-
-  copy.mesh = this.mesh.clone();
-
-  return copy;
 };
 
-
-TexturedCube.prototype.copy = function () {
-  let copy = new TexturedCube();
-
-  copy.mesh = new THREE.Mesh();
-  copy.mesh.copy(this.mesh);
-
-  return copy;
-};
-
+THREE.TexturedCube.prototype = Object.create(THREE.Mesh.prototype);

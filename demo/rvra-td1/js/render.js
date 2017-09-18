@@ -33,9 +33,9 @@ function createPlane(builder, planeLength = 1, planeHeigth = 1) {
     for (x = starting; x < ending; ++x) {
       for (z = starting; z < ending; ++z) {
 	let cube = builder.getOne();
-	cube.mesh.position.set(x, planeHeigth, z);
+	cube.position.set(x, planeHeigth, z);
 	
-	group.add(cube.mesh);
+	group.add(cube);
       }
     }
   }
@@ -98,11 +98,13 @@ function initEventListeners () {
     let id = ( pixelBuffer[0] * 256 * 256 ) | ( pixelBuffer[1] * 256 ) | ( pixelBuffer[2] );
 
     let object = scene.getObjectById( id );
+
+    if (!object) return;
     
     switch (buttonPressed) {
     case 1 : // middle mouse button
-      let new_object = object.clone();
-      applyFaceColor(new_object.geometry, new_object.id);
+      let duplicator = new CubeGenerator(object);
+      let new_object = duplicator.getOne();
       new_object.position.y += 1;
       scene.add(new_object);
       break;
@@ -184,10 +186,10 @@ function init() {
 
   let tnt_materials = [ textures["tnt-1"], textures["tnt-1"], textures["tnt-2"], textures["tnt-2"], textures["tnt-1"], textures["tnt-1"] ];
   
-  let stone_cube = new TexturedCube (textures["stone"]);
-  let moss_cube = new TexturedCube (textures["moss"]);
-  let sand_cube = new TexturedCube (textures["sand"]);
-  let tnt_cube = new TexturedCube (tnt_materials);
+  let stone_cube = new THREE.TexturedCube (textures["stone"]);
+  let moss_cube = new THREE.TexturedCube (textures["moss"]);
+  let sand_cube = new THREE.TexturedCube (textures["sand"]);
+  let tnt_cube = new THREE.TexturedCube (tnt_materials);
   
   stoneBuilder.setOA(stone_cube);
   mossBuilder.setOA(moss_cube);
@@ -198,14 +200,13 @@ function init() {
   scene.add( createPlane(stoneBuilder, 17, -1) );
 
   let tnt = tntBuilder.getOne();
-  tnt.mesh.position.set(0,0,0);
-  scene.add( tnt.mesh );
+  tnt.position.set(0,0,0);
+  scene.add( tnt );
 }
 
 
 function animate() {
   stats.update();
-  requestAnimationFrame(animate);
 
   renderer.clear();
   
@@ -224,9 +225,9 @@ function animate() {
 
   
   renderer.render(scene, camera);
-  
   renderer.clearDepth();
-
   renderer.render(hudScene, hudCamera);
+
+  requestAnimationFrame(animate);
 }
 
