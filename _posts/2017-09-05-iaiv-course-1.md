@@ -10,12 +10,13 @@ description: ''
 categories:
 - Semester 9
 - Animated Image and Video Indexing
+- Animated Image and Video Indexing - Courses
 ---
 
 Lecture of the day : [pdf file](http://dept-info.labri.fr/~benois-p/AnimImagesIndexVideoIPCV2017_2018/Lecture1.pdf)
 
 [Pr. Jenny Benois-Pineau](mailto://jenny.benois-pinneau@u-bordeaux.fr) at office : Building A30, room 272.
-Webpage for the UE : [http://dept-info.labri.fr/~benois-p](dept-info.labri.fr/~benois-p)
+[Webpage for the UE](http://dept-info.labri.fr/~benois-p)
 
 We will be in groups of three and we will have to analyse papers for presenting it to all the class.
 

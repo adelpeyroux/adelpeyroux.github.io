@@ -5,13 +5,76 @@
     <description>Arnaud Delpeyroux's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Sep 2017 21:01:03 +0200</pubDate>
-    <lastBuildDate>Mon, 18 Sep 2017 21:01:03 +0200</lastBuildDate>
+    <pubDate>Tue, 19 Sep 2017 20:48:38 +0200</pubDate>
+    <lastBuildDate>Tue, 19 Sep 2017 20:48:38 +0200</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
+        <title>Virtual Reality and Augmented Reality - Practice 2</title>
+        <description>&lt;h2 id=&quot;liens-utiles&quot;&gt;Liens utiles&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/rvra/td2.html&quot;&gt;Sujet du TD&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://paulbourke.net/stereographics/stereorender/&quot;&gt;Paul Bourke article&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stanford.edu/class/ee267/lectures/lecture6.pdf&quot;&gt;Gordon Wetestein slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/adelpeyroux/adelpeyroux.github.io/tree/master/demo/rvra-td1&quot;&gt;Code source du rendu final&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/demo/rvra-td2/&quot;&gt;Demo du rendu final&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/archives/rvra/rva_td2_delpeyroux.zip&quot;&gt;Archive contenant le code source&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 19 Sep 2017 14:00:00 +0200</pubDate>
+        <link>http://localhost:4000/rvra-td-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/rvra-td-2/</guid>
+        
+        <category>semester9</category>
+        
+        <category>rvra</category>
+        
+        <category>webGL</category>
+        
+        <category>three.js</category>
+        
+        <category>anaglyph</category>
+        
+        <category>dof</category>
+        
+        <category>datGUIVR</category>
+        
+        
+        <category>Semester 9</category>
+        
+        <category>Virtual reality Augmented reality</category>
+        
+        <category>Virtual reality Augmented reality - Practices</category>
+        
+      </item>
+    
+      <item>
+        <title>Animated Image and Video Indexing - Course 2</title>
+        <description>&lt;p&gt;Lecture of the day : &lt;a href=&quot;http://dept-info.labri.fr/~benois-p/AnimImageVideoIndexIPCV2017_2018/Lecture2.pdf&quot;&gt;pdf file&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Pour calculer &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt; on vient prendre des patchs dans des parties homogènes de l’imgae, la moyenne sera donc constantes et on poura donc evaluer e &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt; comme il faut en utilisant la formule appropriée.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Projected Motion&lt;/strong&gt; : Mouvement réel projeté dans l’espace de projection (plan focal).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Observed Motion&lt;/strong&gt; : Mouvement obe=servé (mouvement de lumiere).&lt;/p&gt; &lt;p&gt;Avec cela on peut construire un champs de déplacement appellé &lt;strong&gt;dense motion field&lt;/strong&gt;. C’est un champs vectoriel qui represente les mouvements dans l’image. On peut le dérivé pour obtenir le &lt;strong&gt;velocity field&lt;/strong&gt;.&lt;/p&gt; &lt;h2 id=&quot;entropy&quot;&gt;Entropy&lt;/h2&gt; &lt;p&gt;L’entropy d’une...</description>
+        <pubDate>Tue, 19 Sep 2017 10:15:00 +0200</pubDate>
+        <link>http://localhost:4000/aivi-course-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/aivi-course-2/</guid>
+        
+        <category>semester9</category>
+        
+        <category>iaiv</category>
+        
+        
+        <category>Semester 9</category>
+        
+        <category>Animated Image and Video Indexing</category>
+        
+        <category>Animated Image and Video Indexing - Courses</category>
+        
+      </item>
+    
+      <item>
         <title>Virtual Reality and Augmented Reality - Practice 1</title>
-        <description>&lt;h1 id=&quot;td1---navigation-3d-et-interactions-simples&quot;&gt;TD1 - Navigation 3D et interactions simples&lt;/h1&gt; &lt;h2 id=&quot;1-première-scène-3d&quot;&gt;1. Première scène 3D&lt;/h2&gt; &lt;p&gt;Après avoir suivi le tutoriel conseillé pour la création de la scène, j’initialise bien un &lt;em&gt;Renderer&lt;/em&gt;, une &lt;em&gt;Scene&lt;/em&gt;, une &lt;em&gt;Camera&lt;/em&gt; ainsi qu’un &lt;em&gt;TrackballControls&lt;/em&gt;. Ces objets sont initialisés puis mis à jours dans la fonction &lt;em&gt;animate&lt;/em&gt;. Ensuite pour générer les cubes, j’ai implementer la classe &lt;em&gt;TexturedCube&lt;/em&gt; qui hérite de la classe &lt;em&gt;THREE.Mesh&lt;/em&gt;. Le constructeur de cette classe prend en parametre soit une texture, ou bien un tableau de 6 textures qui seront appliquées à un cude de longueur 1. Enfin, afin d’éviter de devoir utiliser tout le temps...</description>
+        <description>&lt;h1 id=&quot;td1---navigation-3d-et-interactions-simples&quot;&gt;TD1 - Navigation 3D et interactions simples&lt;/h1&gt; &lt;h2 id=&quot;1-première-scène-3d&quot;&gt;1. Première scène 3D&lt;/h2&gt; &lt;p&gt;Après avoir suivi le tutoriel conseillé pour la création de la scène, j’initialise bien un &lt;em&gt;Renderer&lt;/em&gt;, une &lt;em&gt;Scene&lt;/em&gt;, une &lt;em&gt;Camera&lt;/em&gt; ainsi qu’un &lt;em&gt;TrackballControls&lt;/em&gt;. Ces objets sont initialisés puis mis à jours dans la fonction &lt;em&gt;animate&lt;/em&gt;. Ensuite pour générer les cubes, j’ai implementer la classe &lt;em&gt;TexturedCube&lt;/em&gt; qui hérite de la classe &lt;em&gt;THREE.Mesh&lt;/em&gt;. Le constructeur de cette classe prend en parametre soit une texture, ou bien un tableau de 6 textures qui seront appliquées à un cube de longueur 1. Enfin, afin d’éviter de devoir utiliser tout le temps...</description>
         <pubDate>Sun, 17 Sep 2017 08:00:00 +0200</pubDate>
         <link>http://localhost:4000/rvra-td1/</link>
         <guid isPermaLink="true">http://localhost:4000/rvra-td1/</guid>
@@ -192,7 +255,7 @@
     
       <item>
         <title>Animated Image and Video Indexing - Course 1</title>
-        <description>&lt;p&gt;Lecture of the day : &lt;a href=&quot;http://dept-info.labri.fr/~benois-p/AnimImagesIndexVideoIPCV2017_2018/Lecture1.pdf&quot;&gt;pdf file&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;mailto://jenny.benois-pinneau@u-bordeaux.fr&quot;&gt;Pr. Jenny Benois-Pineau&lt;/a&gt; at office : Building A30, room 272. Webpage for the UE : &lt;a href=&quot;dept-info.labri.fr/~benois-p&quot;&gt;http://dept-info.labri.fr/~benois-p&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We will be in groups of three and we will have to analyse papers for presenting it to all the class.&lt;/p&gt; &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt; &lt;p&gt;UGC : user generated content Very used in medical imaging.&lt;/p&gt; &lt;h3 id=&quot;colour-system-&quot;&gt;Colour system :&lt;/h3&gt; &lt;p&gt;RGB system : 3 component additive system. Each component correspond in order at Red, Green, and Blue.&lt;/p&gt; &lt;p&gt;$$ C(x,y) = r(x,y) + g(x,y) + b(x,y) $$&lt;/p&gt; &lt;p&gt;It is used in video cameras RGB-D&lt;/p&gt; &lt;p&gt;Allows for a precise...</description>
+        <description>&lt;p&gt;Lecture of the day : &lt;a href=&quot;http://dept-info.labri.fr/~benois-p/AnimImagesIndexVideoIPCV2017_2018/Lecture1.pdf&quot;&gt;pdf file&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;mailto://jenny.benois-pinneau@u-bordeaux.fr&quot;&gt;Pr. Jenny Benois-Pineau&lt;/a&gt; at office : Building A30, room 272. &lt;a href=&quot;http://dept-info.labri.fr/~benois-p&quot;&gt;Webpage for the UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We will be in groups of three and we will have to analyse papers for presenting it to all the class.&lt;/p&gt; &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt; &lt;p&gt;UGC : user generated content Very used in medical imaging.&lt;/p&gt; &lt;h3 id=&quot;colour-system-&quot;&gt;Colour system :&lt;/h3&gt; &lt;p&gt;RGB system : 3 component additive system. Each component correspond in order at Red, Green, and Blue.&lt;/p&gt; &lt;p&gt;$$ C(x,y) = r(x,y) + g(x,y) + b(x,y) $$&lt;/p&gt; &lt;p&gt;It is used in video cameras RGB-D&lt;/p&gt; &lt;p&gt;Allows for a precise colour acquistion&lt;/p&gt;...</description>
         <pubDate>Tue, 05 Sep 2017 10:15:00 +0200</pubDate>
         <link>http://localhost:4000/iaiv-course-1/</link>
         <guid isPermaLink="true">http://localhost:4000/iaiv-course-1/</guid>
@@ -206,35 +269,7 @@
         
         <category>Animated Image and Video Indexing</category>
         
-      </item>
-    
-      <item>
-        <title>Infos et liens utiles</title>
-        <description>&lt;p&gt;Soutenance de stage des ex-M2 : 13 - 15 Septembre&lt;/p&gt;
-
-&lt;p&gt;Sujet de stage à faire valider par le respondable de la spécialité (Anne Vialard pour IIS).&lt;/p&gt;
-
-&lt;p&gt;Convention de stage à établir un mois à l’avance.&lt;/p&gt;
-
-&lt;p&gt;Liens utiles :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;masterinfo.emi.u-bordeaux.fr&quot;&gt;Site d’information du master Informatique Bordeaux&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://masterinfo.emi.u-bordeaux.fr/wiki/doku.php?id=iis&quot;&gt;Page d’information master 2 Informatique - Informatique pour l’Image et le Son&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;www.labri.fr/presentation/rentree2017&quot;&gt;Diaporama presenté lors de la réunion&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Liste de diffusion à utiliser pour contacter le sécretaria du master : &lt;a href=&quot;mailto://uf-info.admin@diff.u-bordeaux.fr&quot;&gt;uf-info.admin@diff.u-bordeaux.fr&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 01 Sep 2017 18:25:00 +0200</pubDate>
-        <link>http://localhost:4000/reunion-rentree/</link>
-        <guid isPermaLink="true">http://localhost:4000/reunion-rentree/</guid>
-        
-        <category>semester9</category>
-        
-        <category>utils</category>
-        
-        
-        <category>Semester 9</category>
+        <category>Animated Image and Video Indexing - Courses</category>
         
       </item>
     

@@ -189,6 +189,26 @@
 
     <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
         <div class="content">
+            <a title="Open the post" href="/rvra-td-2/">
+                <h2 class="post-title" itemprop="name">Virtual-Reality-and-Augmented-Reality---Practice-2.md</h2>
+            </a>
+        </div>
+    </article>
+
+    
+
+    <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+        <div class="content">
+            <a title="Open the post" href="/aivi-course-2/">
+                <h2 class="post-title" itemprop="name">Animated-Image-and-Video-Indexing---Course-2.md</h2>
+            </a>
+        </div>
+    </article>
+
+    
+
+    <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+        <div class="content">
             <a title="Open the post" href="/rvra-td1/">
                 <h2 class="post-title" itemprop="name">Virtual-Reality-and-Augmented-Reality---Practice-1.md</h2>
             </a>
@@ -292,7 +312,7 @@
 
 <h2 id="1-première-scène-3d">1. Première scène 3D</h2>
 
-<p>Après avoir suivi le tutoriel conseillé pour la création de la scène, j’initialise bien un <em>Renderer</em>, une <em>Scene</em>, une <em>Camera</em> ainsi qu’un <em>TrackballControls</em>. Ces objets sont initialisés puis mis à jours dans la fonction <em>animate</em>. Ensuite pour générer les cubes, j’ai implementer la classe <em>TexturedCube</em> qui hérite de la classe <em>THREE.Mesh</em>. Le constructeur de cette classe prend en parametre soit une texture, ou bien un tableau de 6 textures qui seront appliquées à un cude de longueur 1. Enfin, afin d’éviter de devoir utiliser tout le temps ce constructeur et donc les textures, j’ai implémenté un “générateur de cube” qui vient stocké un cube et le clonera à la demande.</p>
+<p>Après avoir suivi le tutoriel conseillé pour la création de la scène, j’initialise bien un <em>Renderer</em>, une <em>Scene</em>, une <em>Camera</em> ainsi qu’un <em>TrackballControls</em>. Ces objets sont initialisés puis mis à jours dans la fonction <em>animate</em>. Ensuite pour générer les cubes, j’ai implementer la classe <em>TexturedCube</em> qui hérite de la classe <em>THREE.Mesh</em>. Le constructeur de cette classe prend en parametre soit une texture, ou bien un tableau de 6 textures qui seront appliquées à un cube de longueur 1. Enfin, afin d’éviter de devoir utiliser tout le temps ce constructeur et donc les textures, j’ai implémenté un “générateur de cube” qui vient stocké un cube et le clonera à la demande.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">THREE</span><span class="p">.</span><span class="nx">TexturedCube</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">textures</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">textures</span><span class="p">)</span> <span class="p">{</span>
@@ -338,25 +358,25 @@
 
 <h2 id="2-vue-à-la-première-personne">2. Vue à la première personne</h2>
 
-<p>Ensuite, pour ajouter la vue à la première personne, j’ai utilisé (comme proposé) un <em>PointerLockControls</em> au lieu du <em>TrackballControls</em> que j’ai ajouté à la scene. En utilisant la <em>PointerLock</em> API et ce controlleur on obtient bien une camera à la premiere personne.</p>
+<p>Ensuite, pour ajouter la vue à la première personne, j’ai utilisé (comme proposé) un <em>PointerLockControls</em> au lieu du <em>TrackballControls</em> que j’ai ajouté à la scène. En utilisant la <em>PointerLock API</em> et ce contrôleur on obtient bien une camera à la première personne.</p>
 
-<p>Pour obtenir un déplacement a la premiere personne, il suffit juste de capturer les evenements du clavier (<em>keyup</em> et <em>keydown</em>) pour mettre à jours la position de la camera.</p>
+<p>Pour obtenir un déplacement à la première personne, il suffit juste de capturer les événements du clavier (<em>keyup</em> et <em>keydown</em>) pour mettre à jour la position de la camera.</p>
 
-<p>Enfin, en utilisant une camera orthogonale et une scene contenant tout les objets du <em>HUD</em>(deux lignes blanches dans notre cas) on peut afficher en surimpression un réticule de visé. Pour ce faire il nous a fallu mettre l’attribut <em>autoClear</em> du renderer à false pour pouvoir nettoyer l’affichage, effectuer le rendu de la scene, netoyer le <em>depth buffer</em> et afficher le réticule.</p>
+<p>Enfin, en utilisant une camera orthogonale et une scène contenant tous les objets du <em>HUD</em> (deux lignes blanches dans notre cas), on peut afficher en surimpression un réticule de visé. Pour ce faire, il nous a fallu mettre l’attribut <em>autoClear</em> du renderer à false pour pouvoir nettoyer l’affichage, effectuer le rendu de la scène, nettoyer le <em>depth buffer</em> et afficher le réticule.</p>
 
 <h2 id="3-sélection-dun-objet">3. Sélection d’un objet</h2>
 
-<p>Afin d’implémenter le <em>color picking</em>, il a fallut d’abord attribuer à chaque objet une couleur unique (à l’aide de son id). Ainsi, à chaque fois que l’on viendra cloner un cube à l’aide du <em>CubeGenerator</em>, on viens appeler la fonction <em>applyFaceColor</em> proposé. Néanmoins, cette solution ne fonctionnait pas. En effet lors du clonage d’un <em>THREE.Mesh</em>, la géometrie du mesh cloné etait réutilisée et non clonée. Ceci faisait que tout les cubes cloné à partir du cube originel avait la même couleur unique. Pour résoudre cela, j’ai du surcharger la méthode <em>clone</em> de la classe <em>THREE.Mesh</em> tel que :</p>
+<p>Afin d’implémenter le color picking, il a fallut d’abord attribuer à chaque objet une couleur unique (à l’aide de son id). Ainsi, à chaque fois que l’on viendra cloner un cube à l’aide du <em>CubeGenerator</em>, on vient appeler la fonction <em>applyFaceColor</em> proposée. Néanmoins, cette solution ne fonctionnait pas. En effet, lors du clonage d’un <em>THREE.Mesh</em>, la géométrie du mesh cloné était réutilisée et non clonée. Ceci faisait que tous les cubes clonés à partir du cube originel avaient la même couleur unique. Pour résoudre cela, j’ai du surcharger la méthode <em>clone</em> de la classe <em>THREE.Mesh</em> tel que :</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">clone</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">clone</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">material</span> <span class="p">).</span><span class="nx">copy</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
 <span class="p">};</span></code></pre></figure>
 
-<p>Ensuite on effectue un rendu de la scene en surchargeant le materiau d’affichage avec la couleur des faces pour chaque objet dans un buffer. Ainsi il nous suffit à chaque clic de la souris (évenement <em>click</em>) venir lire dans ce buffer la couleur sous le réticule, en déduire l’id du cube visé et appliqué l’opération souhaitée.</p>
+<p>Ensuite on effectue un rendu de la scène en surchargeant le matériau d’affichage avec la couleur des faces pour chaque objet dans un buffer. Ainsi, il nous suffit à chaque clic de la souris (événement <em>click</em>) de venir lire dans ce buffer la couleur sous le réticule, en déduire l’id du cube visé et appliquer l’opération souhaitée.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>L’ensemble du TD à été effectué et peut etre tester directement en ligne en suivant le lien approprié.</p>
+<p>L’ensemble du TD a été effectué et peut être testé directement en ligne en suivant le lien approprié.</p>
 
 <h2 id="liens-utiles">Liens utiles</h2>
 

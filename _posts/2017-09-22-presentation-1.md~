@@ -1,0 +1,24 @@
+
+
+# Metrics 
+
+## SSD and PNSR 
+
+## Pixel based
+
+## Probabilistics ones
+
+## Bhattacharyya
+
+Probability metrics based on density (using SSD)
+
+## Subjective comparison
+
+### Constraints
+
+  * Human deetction is'nt reliable
+  * All patches are visualy close
+
+**Solution** : 
+
+  * 
