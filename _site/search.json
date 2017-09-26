@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Animated Image and Video Indexing - Course 3",
+      "category" : "Semester 9Animated Image and Video IndexingAnimated Image and Video Indexing - Courses",
+      "tags"     : "semester9 and iaiv",
+      "url"      : "/aivi-course-3/",
+      "date"     : "26 Sep 2017"
+    } ,
+  
+    {
+      "title"    : "Advanced Image Processing - Texture Synthesis",
+      "category" : "Semester 9Advanced Image ProcessingAdvanced Image Processing Practice",
+      "tags"     : "semester9, iap, image, processing, mathlab, octave, and texture synthesis",
+      "url"      : "/texture-synthesis/",
+      "date"     : "22 Sep 2017"
+    } ,
+  
+    {
+      "title"    : "Presentation 1",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/presentation-1/",
+      "date"     : "22 Sep 2017"
+    } ,
+  
+    {
       "title"    : "Virtual Reality and Augmented Reality - Practice 2",
       "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Practices",
       "tags"     : "semester9, rvra, webGL, three.js, anaglyph, dof, and datGUIVR",

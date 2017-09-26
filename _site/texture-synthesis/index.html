@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Advanced Image synthesis - Sampling</title>
+    <title>Advanced Image Processing - Texture Synthesis</title>
 
     <meta name="description" content="">
 
@@ -15,7 +15,7 @@
     <!-- Social Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Advanced Image synthesis - Sampling">
+    <meta name="twitter:title" content="Advanced Image Processing - Texture Synthesis">
     <meta name="twitter:description" content="">
 
     
@@ -23,8 +23,8 @@
     
 
     <!-- Social Facebook/Open Graph -->
-    <meta property="og:url" content="http://localhost:4000/sia-td1-sampling/">
-    <meta property="og:title" content="Advanced Image synthesis - Sampling">
+    <meta property="og:url" content="http://localhost:4000/texture-synthesis/">
+    <meta property="og:title" content="Advanced Image Processing - Texture Synthesis">
     
     <meta property="og:image" content="http://localhost:4000">
     
@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Arnaud Delpeyroux's blog">
 
     <!-- Social Google+/Schema.org  -->
-    <meta itemprop="name" content="Advanced Image synthesis - Sampling"/>
+    <meta itemprop="name" content="Advanced Image Processing - Texture Synthesis"/>
     <meta itemprop="description" content="">
     <meta itemprop="image" content="http://localhost:4000/assets/img/blog-image.png"/>
 
@@ -63,7 +63,7 @@
 
     <link rel="stylesheet" href="/assets/css/main.css">
      <link rel="stylesheet" href="/assets/css/custom.css">
-    <link rel="canonical" href="http://localhost:4000/sia-td1-sampling/">
+    <link rel="canonical" href="http://localhost:4000/texture-synthesis/">
     <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="http://localhost:4000/feed.xml" />
 
     <script type="text/javascript" async
@@ -100,7 +100,7 @@
     
     <ul>
       <li><span>1</span></li>
-      <li><span> /sia-td1-sampling/</span></li>
+      <li><span> /texture-synthesis/</span></li>
       <li><span>⌘ blogspace λ </span></li>
       <li><span>* Menu</span></li>
     </ul>
@@ -332,88 +332,66 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
             
                 <div class="time">
-                    <time itemprop="datePublished" datetime="2017-09-07 09:30:00 +0200">07 Sep 2017</time>
+                    <time itemprop="datePublished" datetime="2017-09-22 14:00:00 +0200">22 Sep 2017</time>
                 </div>
             
-            <h1 class="post-title" itemprop="name">Advanced Image synthesis - Sampling</h1>
+            <h1 class="post-title" itemprop="name">Advanced Image Processing - Texture Synthesis</h1>
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <h2 id="integration-de-monte-carlo-1d">Integration de Monte-Carlo 1D</h2>
+                <p><a href="https://moodle1.u-bordeaux.fr/pluginfile.php/304162/mod_resource/content/0/TextureSynthesis.pdf">Lecture</a></p>
 
-<p>J’utilise le code suivant afin d’evaluer l’integration de la fonction <script type="math/tex">f(x) = 5 x ^4</script> :</p>
+<h2 id="textures">Textures</h2>
 
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">double</span> <span class="nf">int_mc</span><span class="p">(</span><span class="kt">double</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">double</span><span class="p">),</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">varest</span><span class="p">,</span> <span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="kt">double</span> <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">n</span><span class="p">;</span>
-  <span class="kt">double</span> <span class="n">varest_factor</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-  
-  <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
-  <span class="kt">double</span> <span class="n">fx2</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
-  <span class="n">varest</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
-  
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">getX</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<p>Cela peut etre regulier et deterministe ou bien totalement aléatoire.</p>
 
-    <span class="kt">double</span> <span class="n">step_value</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-    <span class="n">fx2</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  
-    
-    <span class="n">result</span> <span class="o">+=</span> <span class="n">step_value</span><span class="p">;</span>
-  <span class="p">}</span>
+<h2 id="texture-synthesis">Texture synthesis</h2>
 
-  <span class="n">varest</span> <span class="o">=</span> <span class="p">((</span><span class="n">fx2</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">result</span> <span class="o">*</span> <span class="n">result</span><span class="p">))</span> <span class="o">*</span> <span class="n">varest_factor</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
+<p>Partir d’une petite image represantant une texture et en créer une plus grande perceptuellement similaire.</p>
 
-<p>La fonction getX(double a, double b) retourne un double aléatoire compris entre a et b tel que :</p>
+<h3 id="aproaches">Aproaches</h3>
 
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">double</span> <span class="nf">getX</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">/</span> <span class="kt">double</span><span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
+<ul>
+  <li>Physical simulation, on vient créer des modeles physiques qui represente nos textures pour les reconstruires.</li>
+  <li>Parametric feature matching. On calcul sur l’image d’example une distribution des couleurs pour reconstruire une image plus grande qui possede les mêmes distributions.</li>
+  <li>Non parametrix synthesis. B&amp;sé sur les chaines de markov et les patch. Pour reconstruire un pixel, on regarde ce qu’il y a autour pouis on regarde dans l’image d’origine pour retrouver ce qui ressemble le plus.</li>
+</ul>
 
-<p>Ceci nous permet donc d’obtenir l’estimation de l’integrale de la fonction <script type="math/tex">f(x)</script> et sa variance estimée. Enfin pour obtenir sa variance analytique il nous faut integrer la formule suivante :</p>
-<div class="center-me">
-	$$
-	\begin{align}
-		\sigma ^2 &amp; = \frac{1}{N} \int _0 ^1 (5 x^4 -1)^2 \, dx \\
-		&amp; = \frac{1}{N} \int _0 ^1 (25 x^8 - 10 x^4 + 1) \, dx \\
-		&amp; = \frac{1}{N} \left[\frac{25}{9} x^9 - \frac{10}{5} x ^5 + x \right]_0 ^1 \\
-		&amp; = \frac{1}{N} (\frac{25}{9} - 2 + 1) \\
-		&amp; = \frac{1}{N} * \frac{16}{9}
-	\end{align}
-	$$
-</div>
+<h2 id="markov-chain">Markov chain</h2>
 
-<h2 id="anti-aliasing">Anti-Aliasing</h2>
+<h3 id="definition">Definition</h3>
 
-<p>L’anti-aliasing a bien été implémenter en utilisant une grille réguliere et une jitterid grid pour integrer les différents rayons nécessaires. On peut voir dessous les resultats pour la scene <strong>tw.scn</strong> avec a gauche sans anti-aliasing, au centre celui utilisant la grille régulière et a droite celui stratifié (on ne parle pas de parquet ici).</p>
+<ul>
+  <li>On a une séquence de n variables a léatoires.</li>
+  <li><script type="math/tex">x _t</script> etat au temps t de la variable.</li>
+  <li>Markov assumption : chaque état ne depends que des états précedents.</li>
+</ul>
 
-<table>
-  <tbody>
-    <tr>
-      <td><img src="/assets/img/sia/td-sampling/tw.png" alt="sans anti-aliasing" /></td>
-      <td><img src="/assets/img/sia/td-sampling/tw-anti-aliasing.png" alt="avec anti-aliasing" /></td>
-      <td><img src="/assets/img/sia/td-sampling/tw-anti-aliasing-jitterid.png" alt="avec anti-aliasing" /></td>
-    </tr>
-  </tbody>
-</table>
+<h2 id="digital-image-completion">Digital Image Completion</h2>
 
-<p>On peut aussi voir la difference entre les deux méthodes d’anti-aliasing avec des valeurs de <strong>samples</strong> differentes ci-dessous :</p>
+<h3 id="diffusion">Diffusion</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-regular-2.png" alt="regular samples = 2" /></td>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-regular-8.png" alt="regular samples = 8" /></td>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-regular-32.png" alt="regular samples = 32" /></td>
-    </tr>
-    <tr>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-startified-2.png" alt="startified samples = 2" /></td>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-startified-8.png" alt="startified samples = 8" /></td>
-      <td><img src="/assets/img/sia/td-sampling/deuxSpheres-stratified-32.png" alt="startified samples = 32" /></td>
-    </tr>
-  </tbody>
-</table>
+<p>Isotropic diffusion : heat equation</p>
 
+<p>// add equation</p>
+
+<ul>
+  <li><script type="math/tex">I _0 E \omega</script> is the input image</li>
+  <li><script type="math/tex">\Delta</script> id the gradient of the image // add formula</li>
+  <li>div is the divergence operator // add formula</li>
+  <li><script type="math/tex">laplacian</script> is the Laplacian operator // add formula</li>
+</ul>
+
+<p>Anisotropic diffusion</p>
+
+<p>// add equation</p>
+
+<ul>
+  <li>c is an increasing function, controlling the amount of smoothing applied at pixel (x, y)</li>
+</ul>
+
+<h2 id="practice">Practice</h2>
+
+<p><a href="http://graphics.cs.cmu.edu/people/efros/research/EfrosLeung.html">Article</a></p>
 
             </article>
 
@@ -421,17 +399,17 @@
 
     <h3>Share</h3>
 
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/sia-td1-sampling/%20via%20&#64;&hashtags=semester9,sia,sampling,montecarlo,raycasting,3D,C++,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/texture-synthesis/%20via%20&#64;&hashtags=semester9,iap,image,processing,mathlab,octave,texture synthesis,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
 
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/sia-td1-sampling/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/texture-synthesis/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
 
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/sia-td1-sampling/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/texture-synthesis/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -453,7 +431,7 @@
         disqus_loaded = true;
         var disqus_shortname = 'arnaud-delpeyroux-blog';
         var disqus_title = '';
-        var disqus_url = '/sia-td1-sampling/';
+        var disqus_url = '/texture-synthesis/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	  <url>
+		<loc>http://localhost:4000/aivi-course-3/</loc>
+	  </url>
+	
+	  <url>
+		<loc>http://localhost:4000/texture-synthesis/</loc>
+	  </url>
+	
+	  <url>
+		<loc>http://localhost:4000/presentation-1/</loc>
+	  </url>
+	
+	  <url>
 		<loc>http://localhost:4000/rvra-td-2/</loc>
 	  </url>
 	

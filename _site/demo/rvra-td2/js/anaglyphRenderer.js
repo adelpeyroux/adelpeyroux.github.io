@@ -7,49 +7,70 @@ function AnaglyphRenderer ( renderer ) {
   this.cameraRight.matrixAutoUpdate = false;
 
   this.right = false;
-
+  
   this.update = function ( camera ) {
-    if (!("isPerspectiveCamera" in camera) && !("isOrthographicCamera" in camera)) throw new Error("Failure - please give me a true camera");
-    
     camera.updateMatrixWorld();
 
     let ipd = displayParameters.ipd;
     
-    this.cameraLeft.matrixWorld = camera.matrixWorld.clone();
-    this.cameraLeft.translateX( -ipd / 2 );
+    this.cameraLeft.matrixWorld.copy(camera.matrixWorld);
+    this.cameraLeft.matrixWorld.multiply(new THREE.Matrix4().makeTranslation(- ipd / 2, 0, 0));
 
-    this.cameraRight.matrixWorld = camera.matrixWorld.clone();
-    this.cameraRight.translateX( ipd / 2 );
+    this.cameraRight.matrixWorld.copy(camera.matrixWorld);
+    this.cameraRight.matrixWorld.multiply(new THREE.Matrix4().makeTranslation( ipd / 2, 0, 0));
 
     let d = displayParameters.distanceScreenViewer;
     let w = displayParameters.screenSize().x;
+    let h = displayParameters.screenSize().y;
     
     let near = camera.near;
-    let far = camera.fear;
+    let far = camera.far;
 
     let planeFactor = 1 / (2 * d);
     
-    let top = near * displayParameters.screenSize().y * planeFactor;
+    let top = near * h * planeFactor;
     let bottom = -top;
 
-    let right = near * (w + ipd) * planeFactor;
-    let left = -near * (w - ipd) * planeFactor;
-    
-    
-    let projectionMatrix = new 
-    THREE.Matrix4().makePerspective(left, right, top, bottom, near, far );
+    let right_left = near * (w + ipd) * planeFactor;
+    let left_left = -1 * near * (w - ipd) * planeFactor;
 
-    this.cameraRight.projectionMatrix = projectionMatrix;
-    this.cameraLeft.projectionMatrix = projectionMatrix;
+    let right_right = near * (w - ipd) * planeFactor;
+    let left_right = -1 * near * (w + ipd) * planeFactor;
+    
+    this.cameraRight.projectionMatrix = new THREE.Matrix4().makePerspective(left_right, right_right, top, bottom, near, far );
+    
+    this.cameraLeft.projectionMatrix = new THREE.Matrix4().makePerspective(left_left, right_left, top, bottom, near, far );
   };
 
   this.render = function ( scene, camera ) {
     this.update(camera);
-    
-    if (this.right)
-      renderer.render(scene, this.cameraRight);
-    else
-      renderer.render(scene, this.cameraLeft);
+
+    let glContext = renderer.domElement.getContext( 'webgl' );
+
+    // Rendering for left eye (red)
+    glContext.colorMask(true, false, false, true);
+    renderer.render(scene, this.cameraLeft);
+
+    // Between the eyes
+    renderer.clearDepth();
+
+    // Rendering for right eye (cyan = blue + green)
+    glContext.colorMask(false, true, true, true);
+    renderer.render(scene, this.cameraRight);
+
+    // After all we reset the color mask
+    glContext.colorMask(true, true, true, true);
   };
 
+  this.renderRight = function (scene, camera) {
+    this.update(camera);
+
+    renderer.render(scene, this.cameraRight);
+  };
+
+  this.renderLeft = function (scene, camera) {
+    this.update(camera);
+
+    renderer.render(scene, this.cameraLeft);
+  };
 }

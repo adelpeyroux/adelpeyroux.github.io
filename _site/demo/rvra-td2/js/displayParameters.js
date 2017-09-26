@@ -8,7 +8,7 @@ var displayParameters = {
   aspectRatio: 16 / 9,
 
   // inter pupillar distance -- in mm
-  ipd: 65,
+  ipd: 64,
 
   // distance bewteen the viewer and the screen -- in mm
   distanceScreenViewer: 500,
@@ -21,7 +21,7 @@ var displayParameters = {
     
     let ratio = this.aspectRatio;
 
-    let nbPixDiag = Math.sqrt(w*w + h*h);
+    let nbPixDiag = Math.round(Math.sqrt(w*w + h*h));
 
     return diag / nbPixDiag;
   },

@@ -17,6 +17,15 @@ var pointerLocked = false;
 
 var velocity = new THREE.Vector3(0,0,0);
 
+var RENDERING_MODE = {
+  NORMAL: 0,
+  ANAGLYPH : 1,
+  ANA_RIGHT : 3,
+  ANA_LEFT : 2
+};
+
+var renderingMethod = RENDERING_MODE.NORMAL;
+
 function init() {
 
   clock = new THREE.Clock();
@@ -124,11 +133,8 @@ function init() {
   var onKeyDown = function ( event ) {
 
     switch ( event.keyCode ) {
-    case 73:
-      anaglyphRenderer.right = false;
-      break;
-    case 79 :
-      anaglyphRenderer.right = true;
+    case 82 : // r, to switch rendering methods
+      renderingMethod = (renderingMethod + 1) % Object.keys(RENDERING_MODE).length ;
       break;
     case 38: // up
     case 87: // w
@@ -137,7 +143,8 @@ function init() {
 
     case 37: // left
     case 65: // a
-      moveLeft = true; break;
+      moveLeft = true;
+      break;
 
     case 40: // down
     case 83: // s
@@ -264,23 +271,34 @@ function render() {
 
   var delta = clock.getDelta();
 
-  velocity.x -= velocity.x * 100.0 * delta;
-  velocity.z -= velocity.z * 100.0 * delta;
+  velocity.x -= velocity.x * 100.0 * delta / 10;
+  velocity.z -= velocity.z * 100.0 * delta / 10;
 
-  if ( moveForward ) velocity.z -= 15000.0 * delta;
-  if ( moveBackward ) velocity.z += 15000.0 * delta;
+  if ( moveForward ) velocity.z -= 15000.0 * delta / 10;
+  if ( moveBackward ) velocity.z += 15000.0 * delta / 10;
 
-  if ( moveLeft ) velocity.x -= 15000.0 * delta;
-  if ( moveRight ) velocity.x += 15000.0 * delta;
+  if ( moveLeft ) velocity.x -= 15000.0 * delta / 10;
+  if ( moveRight ) velocity.x += 15000.0 * delta / 10;
 
-  controls.getObject().translateX( velocity.x * delta );
-  controls.getObject().translateZ( velocity.z * delta );
+  controls.getObject().translateX( velocity.x * delta);
+  controls.getObject().translateZ( velocity.z * delta);
 
   renderer.clear();
 
-  
-  renderer.render( scene, anaglyphRenderer.cameraLeft );
-  //anaglyphRenderer.render(scene, camera);
+  switch (renderingMethod) {
+  case RENDERING_MODE.NORMAL :
+    renderer.render(scene, camera);
+    break;
+  case RENDERING_MODE.ANAGLYPH :
+    anaglyphRenderer.render(scene, camera);
+    break;
+  case RENDERING_MODE.ANA_LEFT :
+    anaglyphRenderer.renderLeft(scene, camera);
+    break;
+  case RENDERING_MODE.ANA_RIGHT :
+    anaglyphRenderer.renderRight(scene, camera);
+    break;
+  }
   
   if(pointerLocked) {
     renderer.clearDepth();

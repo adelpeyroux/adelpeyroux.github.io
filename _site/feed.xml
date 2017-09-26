@@ -5,9 +5,107 @@
     <description>Arnaud Delpeyroux's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 19 Sep 2017 20:48:38 +0200</pubDate>
-    <lastBuildDate>Tue, 19 Sep 2017 20:48:38 +0200</lastBuildDate>
+    <pubDate>Tue, 26 Sep 2017 14:31:29 +0200</pubDate>
+    <lastBuildDate>Tue, 26 Sep 2017 14:31:29 +0200</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Animated Image and Video Indexing - Course 3</title>
+        <description>&lt;p&gt;Lecture of the day : &lt;a href=&quot;http://dept-info.labri.fr/~benois-p/AnimImageVideoIndexIPCV2017_2018/Lecture2.pdf&quot;&gt;pdf file&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 26 Sep 2017 10:15:00 +0200</pubDate>
+        <link>http://localhost:4000/aivi-course-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/aivi-course-3/</guid>
+        
+        <category>semester9</category>
+        
+        <category>iaiv</category>
+        
+        
+        <category>Semester 9</category>
+        
+        <category>Animated Image and Video Indexing</category>
+        
+        <category>Animated Image and Video Indexing - Courses</category>
+        
+      </item>
+    
+      <item>
+        <title>Advanced Image Processing - Texture Synthesis</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://moodle1.u-bordeaux.fr/pluginfile.php/304162/mod_resource/content/0/TextureSynthesis.pdf&quot;&gt;Lecture&lt;/a&gt;&lt;/p&gt; &lt;h2 id=&quot;textures&quot;&gt;Textures&lt;/h2&gt; &lt;p&gt;Cela peut etre regulier et deterministe ou bien totalement aléatoire.&lt;/p&gt; &lt;h2 id=&quot;texture-synthesis&quot;&gt;Texture synthesis&lt;/h2&gt; &lt;p&gt;Partir d’une petite image represantant une texture et en créer une plus grande perceptuellement similaire.&lt;/p&gt; &lt;h3 id=&quot;aproaches&quot;&gt;Aproaches&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;Physical simulation, on vient créer des modeles physiques qui represente nos textures pour les reconstruires.&lt;/li&gt; &lt;li&gt;Parametric feature matching. On calcul sur l’image d’example une distribution des couleurs pour reconstruire une image plus grande qui possede les mêmes distributions.&lt;/li&gt; &lt;li&gt;Non parametrix synthesis. B&amp;amp;sé sur les chaines de markov et les patch. Pour reconstruire un pixel, on regarde ce qu’il y a autour pouis on regarde dans...</description>
+        <pubDate>Fri, 22 Sep 2017 14:00:00 +0200</pubDate>
+        <link>http://localhost:4000/texture-synthesis/</link>
+        <guid isPermaLink="true">http://localhost:4000/texture-synthesis/</guid>
+        
+        <category>semester9</category>
+        
+        <category>iap</category>
+        
+        <category>image</category>
+        
+        <category>processing</category>
+        
+        <category>mathlab</category>
+        
+        <category>octave</category>
+        
+        <category>texture synthesis</category>
+        
+        
+        <category>Semester 9</category>
+        
+        <category>Advanced Image Processing</category>
+        
+        <category>Advanced Image Processing Practice</category>
+        
+      </item>
+    
+      <item>
+        <title>Presentation 1</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://moodle1.u-bordeaux.fr/pluginfile.php/304144/mod_label/intro/ArticleMetrics.pdf&quot;&gt;Paper&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;metrics&quot;&gt;Metrics&lt;/h1&gt;
+
+&lt;h2 id=&quot;ssd-and-pnsr&quot;&gt;SSD and PNSR&lt;/h2&gt;
+
+&lt;h2 id=&quot;pixel-based&quot;&gt;Pixel based&lt;/h2&gt;
+
+&lt;h2 id=&quot;probabilistics-ones&quot;&gt;Probabilistics ones&lt;/h2&gt;
+
+&lt;h2 id=&quot;bhattacharyya&quot;&gt;Bhattacharyya&lt;/h2&gt;
+
+&lt;p&gt;Probability metrics based on density (using SSD)&lt;/p&gt;
+
+&lt;h2 id=&quot;subjective-comparison&quot;&gt;Subjective comparison&lt;/h2&gt;
+
+&lt;h3 id=&quot;constraints&quot;&gt;Constraints&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Human deetction is’nt reliable&lt;/li&gt;
+  &lt;li&gt;All patches are visualy close&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion-&quot;&gt;Conclusion :&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bh2 = the 2nd Bhattacharyya probability sensity based metric&lt;/li&gt;
+  &lt;li&gt;Similarity metric method most relevant compared to subjective selection&lt;/li&gt;
+  &lt;li&gt;Best looking result on denoising application&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 22 Sep 2017 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/presentation-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/presentation-1/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Virtual Reality and Augmented Reality - Practice 2</title>
@@ -208,68 +306,6 @@
         <category>Advanced Image Synthesis Practice</category>
         
         <category>Advanced Image Synthesis</category>
-        
-      </item>
-    
-      <item>
-        <title>Advanced Image synthesis - Monte-Carlo</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/sia/slides/MC.pdf&quot;&gt;Pdf du cours&lt;/a&gt;&lt;/p&gt; &lt;h1 id=&quot;séance-1-du-06092017&quot;&gt;Séance 1 du 06/09/2017&lt;/h1&gt; &lt;h2 id=&quot;integration-de-monte-carlo&quot;&gt;Integration de Monte-Carlo&lt;/h2&gt; &lt;p&gt;On va calculer des intégrales :&lt;/p&gt; &lt;h3 id=&quot;estimation-de-pi--aire-du-disque-unitaire-&quot;&gt;Estimation de Pi : Aire du disque unitaire ?&lt;/h3&gt; &lt;p&gt;On vient prendre un carré contenant un quart du disque et on viens distribuer des echantillons dans le carré. En faisant le rapport entre les echantillons dans le quart de disque par rapport a ceux dans le carré on obtiens Pi.&lt;/p&gt; &lt;p&gt;Precision correcte de Pi a 4 decimales : 100 000 000 000 d’échantillons.&lt;/p&gt; &lt;h3 id=&quot;integration-en-1d-&quot;&gt;Integration en 1D :&lt;/h3&gt; &lt;p&gt;$$ I = \int _a ^b f(x) dx $$&lt;/p&gt; &lt;p&gt;Méthodes de Simpson...</description>
-        <pubDate>Wed, 06 Sep 2017 11:30:00 +0200</pubDate>
-        <link>http://localhost:4000/sia-monte-carlo/</link>
-        <guid isPermaLink="true">http://localhost:4000/sia-monte-carlo/</guid>
-        
-        <category>semester9</category>
-        
-        <category>sia</category>
-        
-        <category>montecarlo</category>
-        
-        
-        <category>Semester 9</category>
-        
-        <category>Advanced Image Synthesis Courses</category>
-        
-        <category>Advanced Image Synthesis</category>
-        
-      </item>
-    
-      <item>
-        <title>Advanced Image synthesis - Intro</title>
-        <description>&lt;p&gt;(Projection violette)&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/sia/slides/Introduction.pdf&quot;&gt;Pdf de ce cours&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;http://www.scratchapixel.com&quot;&gt;Site très gentil :-)&lt;/a&gt;&lt;/p&gt; &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;http://www.labri.fr/perso/pbenard/teaching/sia/&quot;&gt;Site web de l’UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;3 classes d’algorithmes de synthese d’image : * Rendu temps réel * Rendu Hors ligne (temps maitrisé) * Rendu physiquement réaliste&lt;/p&gt; &lt;p&gt;Problèmes à résoudre :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Modélisation&lt;/li&gt; &lt;li&gt;Synthèse d’une image&lt;/li&gt; &lt;li&gt;Animer&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Syllabus : (todo : mettre des liens vers les pages qui parleront de chaue sujet !!)&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Rendus hors ligne : &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/sia-monte-carlo/&quot;&gt;Integration de Monte Carlo&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Matériaux&lt;/li&gt; &lt;li&gt;Eclairage global&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;Rendu temps réel &lt;ul&gt; &lt;li&gt;Scenes complexes&lt;/li&gt; &lt;li&gt;Ombres portées&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;Rendu expressif&lt;/li&gt; &lt;li&gt;Géometrie et animation &lt;ul&gt; &lt;li&gt;Laplacien...</description>
-        <pubDate>Wed, 06 Sep 2017 11:00:00 +0200</pubDate>
-        <link>http://localhost:4000/sia-course-intro/</link>
-        <guid isPermaLink="true">http://localhost:4000/sia-course-intro/</guid>
-        
-        <category>semester9</category>
-        
-        <category>sia</category>
-        
-        
-        <category>Semester 9</category>
-        
-        <category>Advanced Image Synthesis Courses</category>
-        
-        <category>Advanced Image Synthesis</category>
-        
-      </item>
-    
-      <item>
-        <title>Animated Image and Video Indexing - Course 1</title>
-        <description>&lt;p&gt;Lecture of the day : &lt;a href=&quot;http://dept-info.labri.fr/~benois-p/AnimImagesIndexVideoIPCV2017_2018/Lecture1.pdf&quot;&gt;pdf file&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;mailto://jenny.benois-pinneau@u-bordeaux.fr&quot;&gt;Pr. Jenny Benois-Pineau&lt;/a&gt; at office : Building A30, room 272. &lt;a href=&quot;http://dept-info.labri.fr/~benois-p&quot;&gt;Webpage for the UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We will be in groups of three and we will have to analyse papers for presenting it to all the class.&lt;/p&gt; &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt; &lt;p&gt;UGC : user generated content Very used in medical imaging.&lt;/p&gt; &lt;h3 id=&quot;colour-system-&quot;&gt;Colour system :&lt;/h3&gt; &lt;p&gt;RGB system : 3 component additive system. Each component correspond in order at Red, Green, and Blue.&lt;/p&gt; &lt;p&gt;$$ C(x,y) = r(x,y) + g(x,y) + b(x,y) $$&lt;/p&gt; &lt;p&gt;It is used in video cameras RGB-D&lt;/p&gt; &lt;p&gt;Allows for a precise colour acquistion&lt;/p&gt;...</description>
-        <pubDate>Tue, 05 Sep 2017 10:15:00 +0200</pubDate>
-        <link>http://localhost:4000/iaiv-course-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/iaiv-course-1/</guid>
-        
-        <category>semester9</category>
-        
-        <category>iaiv</category>
-        
-        
-        <category>Semester 9</category>
-        
-        <category>Animated Image and Video Indexing</category>
-        
-        <category>Animated Image and Video Indexing - Courses</category>
         
       </item>
     

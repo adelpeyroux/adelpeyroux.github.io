@@ -11,13 +11,13 @@ function AnaglyphRenderer ( renderer ) {
   this.update = function ( camera ) {
     camera.updateMatrixWorld();
 
-    let ipd = displayParameters.ipd / 10;
+    let ipd = displayParameters.ipd;
     
     this.cameraLeft.matrixWorld.copy(camera.matrixWorld);
-    this.cameraLeft.translateX( - ipd / 2 );
+    this.cameraLeft.matrixWorld.multiply(new THREE.Matrix4().makeTranslation(- ipd / 2, 0, 0));
 
     this.cameraRight.matrixWorld.copy(camera.matrixWorld);
-    this.cameraRight.translateX( ipd / 2 );
+    this.cameraRight.matrixWorld.multiply(new THREE.Matrix4().makeTranslation( ipd / 2, 0, 0));
 
     let d = displayParameters.distanceScreenViewer;
     let w = displayParameters.screenSize().x;
@@ -62,4 +62,15 @@ function AnaglyphRenderer ( renderer ) {
     glContext.colorMask(true, true, true, true);
   };
 
+  this.renderRight = function (scene, camera) {
+    this.update(camera);
+
+    renderer.render(scene, this.cameraRight);
+  };
+
+  this.renderLeft = function (scene, camera) {
+    this.update(camera);
+
+    renderer.render(scene, this.cameraLeft);
+  };
 }
