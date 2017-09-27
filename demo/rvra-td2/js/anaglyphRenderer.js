@@ -13,11 +13,11 @@ function AnaglyphRenderer ( renderer ) {
 
     let ipd = displayParameters.ipd;
     
-    this.cameraLeft.matrixWorld.copy(camera.matrixWorld);
-    this.cameraLeft.matrixWorld.multiply(new THREE.Matrix4().makeTranslation(- ipd / 2, 0, 0));
+    this.cameraLeft.matrixWorld = camera.matrixWorld.clone();
+    this.cameraRight.matrixWorld = camera.matrixWorld.clone();
 
-    this.cameraRight.matrixWorld.copy(camera.matrixWorld);
-    this.cameraRight.matrixWorld.multiply(new THREE.Matrix4().makeTranslation( ipd / 2, 0, 0));
+    this.cameraLeft.matrixWorld.multiply(new THREE.Matrix4().makeTranslation(- ipd / 2, 0, 0));
+    this.cameraRight.matrixWorld.multiply(new THREE.Matrix4().makeTranslation(ipd / 2, 0, 0));
 
     let d = displayParameters.distanceScreenViewer;
     let w = displayParameters.screenSize().x;
@@ -48,7 +48,7 @@ function AnaglyphRenderer ( renderer ) {
     let glContext = renderer.domElement.getContext( 'webgl' );
 
     // Rendering for left eye (red)
-    glContext.colorMask(true, false, false, true);
+
     renderer.render(scene, this.cameraLeft);
 
     // Between the eyes

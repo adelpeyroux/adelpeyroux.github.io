@@ -285,6 +285,7 @@ function render() {
 
   renderer.clear();
 
+  
   switch (renderingMethod) {
   case RENDERING_MODE.NORMAL :
     renderer.render(scene, camera);

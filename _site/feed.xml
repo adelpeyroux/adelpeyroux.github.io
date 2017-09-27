@@ -5,9 +5,30 @@
     <description>Arnaud Delpeyroux's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 26 Sep 2017 14:31:29 +0200</pubDate>
-    <lastBuildDate>Tue, 26 Sep 2017 14:31:29 +0200</lastBuildDate>
+    <pubDate>Wed, 27 Sep 2017 18:42:58 +0200</pubDate>
+    <lastBuildDate>Wed, 27 Sep 2017 18:42:58 +0200</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Advanced Image synthesis - Materials</title>
+        <description>
+</description>
+        <pubDate>Wed, 27 Sep 2017 11:30:00 +0200</pubDate>
+        <link>http://localhost:4000/sia-materials/</link>
+        <guid isPermaLink="true">http://localhost:4000/sia-materials/</guid>
+        
+        <category>semester9</category>
+        
+        <category>sia</category>
+        
+        
+        <category>Semester 9</category>
+        
+        <category>Advanced Image Synthesis Courses</category>
+        
+        <category>Advanced Image Synthesis</category>
+        
+      </item>
     
       <item>
         <title>Animated Image and Video Indexing - Course 3</title>
@@ -276,36 +297,6 @@
         <category>Advanced Image Processing</category>
         
         <category>Advanced Image Processing Practice</category>
-        
-      </item>
-    
-      <item>
-        <title>Advanced Image synthesis - Sampling</title>
-        <description>&lt;h2 id=&quot;integration-de-monte-carlo-1d&quot;&gt;Integration de Monte-Carlo 1D&lt;/h2&gt; &lt;p&gt;J’utilise le code suivant afin d’evaluer l’integration de la fonction &lt;script type=&quot;math/tex&quot;&gt;f(x) = 5 x ^4&lt;/script&gt; :&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;int_mc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;varest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;varest_factor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;...</description>
-        <pubDate>Thu, 07 Sep 2017 09:30:00 +0200</pubDate>
-        <link>http://localhost:4000/sia-td1-sampling/</link>
-        <guid isPermaLink="true">http://localhost:4000/sia-td1-sampling/</guid>
-        
-        <category>semester9</category>
-        
-        <category>sia</category>
-        
-        <category>sampling</category>
-        
-        <category>montecarlo</category>
-        
-        <category>raycasting</category>
-        
-        <category>3D</category>
-        
-        <category>C++</category>
-        
-        
-        <category>Semester 9</category>
-        
-        <category>Advanced Image Synthesis Practice</category>
-        
-        <category>Advanced Image Synthesis</category>
         
       </item>
     

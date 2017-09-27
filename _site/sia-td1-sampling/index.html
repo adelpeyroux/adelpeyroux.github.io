@@ -189,6 +189,16 @@
 
     <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
         <div class="content">
+            <a title="Open the post" href="/sia-materials/">
+                <h2 class="post-title" itemprop="name">Advanced-Image-synthesis---Materials.md</h2>
+            </a>
+        </div>
+    </article>
+
+    
+
+    <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+        <div class="content">
             <a title="Open the post" href="/aivi-course-3/">
                 <h2 class="post-title" itemprop="name">Animated-Image-and-Video-Indexing---Course-3.md</h2>
             </a>
@@ -383,6 +393,10 @@
 	$$
 </div>
 
+<p>Ainsi on peut estimer pour un nombre gradissant d’échantillons les valeurs suivantes : l’erreur d’estimation, la variance numérique, la variance analytique. On obtient donc :</p>
+
+<p><img src="/assets/img/sia/td-sampling/plot-final.png" alt="plot" /></p>
+
 <h2 id="anti-aliasing">Anti-Aliasing</h2>
 
 <p>L’anti-aliasing a bien été implémenter en utilisant une grille réguliere et une jitterid grid pour integrer les différents rayons nécessaires. On peut voir dessous les resultats pour la scene <strong>tw.scn</strong> avec a gauche sans anti-aliasing, au centre celui utilisant la grille régulière et a droite celui stratifié (on ne parle pas de parquet ici).</p>
@@ -414,6 +428,90 @@
   </tbody>
 </table>
 
+<h2 id="sources-étendues">Sources étendues</h2>
+
+<h3 id="echantillonage-de-monte-carlo">Echantillonage de Monte-Carlo</h3>
+
+<p>En echantillonnant les sources de lumière de type <strong>AreaLight</strong> On obtients les résultats suivants.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/assets/img/sia/td-sampling/tw_area.png" alt="tw_area.scn" /></td>
+      <td><img src="/assets/img/sia/td-sampling/killeroo_area.png" alt="tw_area.scn" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="source-texturée">Source Texturée</h3>
+
+<p>Afin d’obtenir l’aplication d’une texture à l’éclairage d’une AreaLight il a fallut moddifier la methode <strong>AreaLight::intensity</strong> tel que :</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">Color3f</span> <span class="n">AreaLight</span><span class="o">::</span><span class="n">intensity</span><span class="p">(</span><span class="k">const</span> <span class="n">Point3f</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point3f</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="n">Vector3f</span> <span class="n">dir</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">dir</span><span class="p">.</span><span class="n">squaredNorm</span><span class="p">();</span>
+    <span class="n">Color3f</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">m_intensity</span> <span class="o">/</span> <span class="n">d2</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m_texture</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// TODO
+</span>        <span class="kt">float</span> <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">position</span><span class="p">()).</span><span class="n">dot</span><span class="p">(</span><span class="n">uVec</span><span class="p">())</span> <span class="o">/</span> <span class="n">size</span><span class="p">().</span><span class="n">x</span><span class="p">();</span>
+        <span class="kt">float</span> <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">position</span><span class="p">()).</span><span class="n">dot</span><span class="p">(</span><span class="n">vVec</span><span class="p">())</span> <span class="o">/</span> <span class="n">size</span><span class="p">().</span><span class="n">y</span><span class="p">();</span>
+
+        <span class="n">Color3f</span> <span class="n">texture_value</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">m_texture</span><span class="p">)(</span><span class="n">j</span> <span class="o">*</span> <span class="n">m_texture</span><span class="o">-&gt;</span><span class="n">cols</span><span class="p">(),</span> <span class="n">i</span> <span class="o">*</span> <span class="n">m_texture</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">());</span>
+        <span class="n">intensity</span> <span class="o">*=</span> <span class="n">texture_value</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mf">0.</span><span class="n">f</span><span class="p">,</span><span class="n">dir</span><span class="p">.</span><span class="n">normalized</span><span class="p">().</span><span class="n">dot</span><span class="p">(</span><span class="n">direction</span><span class="p">()))</span> <span class="o">*</span> <span class="n">intensity</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Et grace a cela on peut donc venir lire dans la texture et appliquer une couleur spécifique a l’éclairage. On obtient avec ceci les résultats suivants.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/assets/img/sia/td-sampling/tw_area_textured.png" alt="tw_area.scn" /></td>
+      <td><img src="/assets/img/sia/td-sampling/killeroo_area_textured.png" alt="tw_area.scn" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ambiante-occlusion">Ambiante Occlusion</h2>
+
+<h3 id="échantillonnage-dun-hémisphère">Échantillonnage d’un hémisphère</h3>
+
+<p>Après implémentation des differentes méthodes on obtiens les résultats suivants. Dans l’ordre, de gauche a droite, <strong>squaretoDisk</strong>, <strong>squaretoUniformHemisphere</strong>, <strong>squaretoCosineHemisphere</strong>.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/assets/img/sia/td-sampling/square2disk-distrib.png" alt="square 2 disk distrib" /></td>
+      <td><img src="/assets/img/sia/td-sampling/square2hemisphereuni-distrib.png" alt="square 2 hemisphere distrib" /></td>
+      <td><img src="/assets/img/sia/td-sampling/square2hemispherecos-distrib.png" alt="square 2 hemisphere cosine distrib" /></td>
+    </tr>
+    <tr>
+      <td><img src="/assets/img/sia/td-sampling/square2disk-check.png" alt="square 2 disk check" /></td>
+      <td><img src="/assets/img/sia/td-sampling/square2hemisphereuni-check.png" alt="square 2 hemisphere check" /></td>
+      <td><img src="/assets/img/sia/td-sampling/square2hemispherecos-check.png" alt="square 2 hemisphere cosine check" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="calcul-de-lao">Calcul de l’AO</h3>
+
+<p>Pour calculer l’<strong>ambiant occlusion</strong> on effectue les opérations suivantes. On lance des rayons depuis la caméra, quand on touche une surface, on vient échantillonner un certains nombre de points dans un hémisphère orienté selon le repère local au point d’intersection du premier rayon. Pour chacun de ces échantillons on vas lancer un rayon pour calculer la visibilité du point d’intersection selon une direction définie par l’échantillon. Ainsi, en sommant l’ensemble de ces indication de visibilités  puis en les moyennant on integre la visibilité du point d’intersection sur la surface. Avec cette méthode on obtiens les résultats suivants.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/assets/img/sia/td-sampling/killeroo_ao_uniform.png" alt="ao uniforme" /></td>
+      <td><img src="/assets/img/sia/td-sampling/killeroo_ao_cosine.png" alt="ao cosine" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="liens-utiles">Liens utiles</h2>
+
+<p><a href="http://www.labri.fr/perso/pbenard/teaching/sia/td1.html">Sujet du TD</a></p>
+
+<p><a href="/assets/archives/sia/sia_td1_delpeyroux.zip">Code source</a></p>
 
             </article>
 

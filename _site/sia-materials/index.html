@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Virtual Reality and Augmented Reality - Practice 1</title>
+    <title>Advanced Image synthesis - Materials</title>
 
     <meta name="description" content="">
 
@@ -15,7 +15,7 @@
     <!-- Social Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Virtual Reality and Augmented Reality - Practice 1">
+    <meta name="twitter:title" content="Advanced Image synthesis - Materials">
     <meta name="twitter:description" content="">
 
     
@@ -23,8 +23,8 @@
     
 
     <!-- Social Facebook/Open Graph -->
-    <meta property="og:url" content="http://localhost:4000/rvra-td1/">
-    <meta property="og:title" content="Virtual Reality and Augmented Reality - Practice 1">
+    <meta property="og:url" content="http://localhost:4000/sia-materials/">
+    <meta property="og:title" content="Advanced Image synthesis - Materials">
     
     <meta property="og:image" content="http://localhost:4000">
     
@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Arnaud Delpeyroux's blog">
 
     <!-- Social Google+/Schema.org  -->
-    <meta itemprop="name" content="Virtual Reality and Augmented Reality - Practice 1"/>
+    <meta itemprop="name" content="Advanced Image synthesis - Materials"/>
     <meta itemprop="description" content="">
     <meta itemprop="image" content="http://localhost:4000/assets/img/blog-image.png"/>
 
@@ -63,7 +63,7 @@
 
     <link rel="stylesheet" href="/assets/css/main.css">
      <link rel="stylesheet" href="/assets/css/custom.css">
-    <link rel="canonical" href="http://localhost:4000/rvra-td1/">
+    <link rel="canonical" href="http://localhost:4000/sia-materials/">
     <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="http://localhost:4000/feed.xml" />
 
     <script type="text/javascript" async
@@ -100,7 +100,7 @@
     
     <ul>
       <li><span>1</span></li>
-      <li><span> /rvra-td1/</span></li>
+      <li><span> /sia-materials/</span></li>
       <li><span>⌘ blogspace λ </span></li>
       <li><span>* Menu</span></li>
     </ul>
@@ -342,92 +342,13 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
             
                 <div class="time">
-                    <time itemprop="datePublished" datetime="2017-09-17 08:00:00 +0200">17 Sep 2017</time>
+                    <time itemprop="datePublished" datetime="2017-09-27 11:30:00 +0200">27 Sep 2017</time>
                 </div>
             
-            <h1 class="post-title" itemprop="name">Virtual Reality and Augmented Reality - Practice 1</h1>
+            <h1 class="post-title" itemprop="name">Advanced Image synthesis - Materials</h1>
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <h1 id="td1---navigation-3d-et-interactions-simples">TD1 - Navigation 3D et interactions simples</h1>
-
-<h2 id="1-première-scène-3d">1. Première scène 3D</h2>
-
-<p>Après avoir suivi le tutoriel conseillé pour la création de la scène, j’initialise bien un <em>Renderer</em>, une <em>Scene</em>, une <em>Camera</em> ainsi qu’un <em>TrackballControls</em>. Ces objets sont initialisés puis mis à jours dans la fonction <em>animate</em>. Ensuite pour générer les cubes, j’ai implementer la classe <em>TexturedCube</em> qui hérite de la classe <em>THREE.Mesh</em>. Le constructeur de cette classe prend en parametre soit une texture, ou bien un tableau de 6 textures qui seront appliquées à un cube de longueur 1. Enfin, afin d’éviter de devoir utiliser tout le temps ce constructeur et donc les textures, j’ai implémenté un “générateur de cube” qui vient stocké un cube et le clonera à la demande.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">THREE</span><span class="p">.</span><span class="nx">TexturedCube</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">textures</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">textures</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kd">let</span> <span class="nx">materials</span> <span class="o">=</span> <span class="p">[];</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">textures</span><span class="p">)){</span>
-      <span class="nx">materials</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">(</span> <span class="p">{</span><span class="na">map</span> <span class="p">:</span> <span class="nx">textures</span><span class="p">});</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">tex</span> <span class="nx">of</span> <span class="nx">textures</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">materials</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">(</span> <span class="p">{</span> <span class="na">map</span><span class="p">:</span> <span class="nx">tex</span> <span class="p">}));</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">geometry</span><span class="p">,</span> <span class="nx">materials</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="nx">THREE</span><span class="p">.</span><span class="nx">TexturedCube</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">CubeGenerator</span> <span class="p">(</span><span class="nx">oa</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">oa</span> <span class="o">=</span> <span class="nx">oa</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">CubeGenerator</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setOA</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">texturedCube</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">oa</span> <span class="o">=</span> <span class="nx">texturedCube</span><span class="p">;</span>
-
-  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="nx">CubeGenerator</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getOne</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">the_one</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">oa</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-
-  <span class="kd">let</span> <span class="nx">mesh_id</span> <span class="o">=</span> <span class="nx">the_one</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-  <span class="kd">let</span> <span class="nx">mesh_geom</span> <span class="o">=</span> <span class="nx">the_one</span><span class="p">.</span><span class="nx">geometry</span><span class="p">;</span>
-  
-  <span class="nx">applyFaceColor</span><span class="p">(</span><span class="nx">mesh_geom</span><span class="p">,</span> <span class="nx">mesh_id</span><span class="p">);</span>
-
-  <span class="k">return</span> <span class="nx">the_one</span><span class="p">;</span>
-<span class="p">};</span></code></pre></figure>
-
-<h2 id="2-vue-à-la-première-personne">2. Vue à la première personne</h2>
-
-<p>Ensuite, pour ajouter la vue à la première personne, j’ai utilisé (comme proposé) un <em>PointerLockControls</em> au lieu du <em>TrackballControls</em> que j’ai ajouté à la scène. En utilisant la <em>PointerLock API</em> et ce contrôleur on obtient bien une camera à la première personne.</p>
-
-<p>Pour obtenir un déplacement à la première personne, il suffit juste de capturer les événements du clavier (<em>keyup</em> et <em>keydown</em>) pour mettre à jour la position de la camera.</p>
-
-<p>Enfin, en utilisant une camera orthogonale et une scène contenant tous les objets du <em>HUD</em> (deux lignes blanches dans notre cas), on peut afficher en surimpression un réticule de visé. Pour ce faire, il nous a fallu mettre l’attribut <em>autoClear</em> du renderer à false pour pouvoir nettoyer l’affichage, effectuer le rendu de la scène, nettoyer le <em>depth buffer</em> et afficher le réticule.</p>
-
-<h2 id="3-sélection-dun-objet">3. Sélection d’un objet</h2>
-
-<p>Afin d’implémenter le color picking, il a fallut d’abord attribuer à chaque objet une couleur unique (à l’aide de son id). Ainsi, à chaque fois que l’on viendra cloner un cube à l’aide du <em>CubeGenerator</em>, on vient appeler la fonction <em>applyFaceColor</em> proposée. Néanmoins, cette solution ne fonctionnait pas. En effet, lors du clonage d’un <em>THREE.Mesh</em>, la géométrie du mesh cloné était réutilisée et non clonée. Ceci faisait que tous les cubes clonés à partir du cube originel avaient la même couleur unique. Pour résoudre cela, j’ai du surcharger la méthode <em>clone</em> de la classe <em>THREE.Mesh</em> tel que :</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">clone</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="k">new</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">clone</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">material</span> <span class="p">).</span><span class="nx">copy</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>Ensuite on effectue un rendu de la scène en surchargeant le matériau d’affichage avec la couleur des faces pour chaque objet dans un buffer. Ainsi, il nous suffit à chaque clic de la souris (événement <em>click</em>) de venir lire dans ce buffer la couleur sous le réticule, en déduire l’id du cube visé et appliquer l’opération souhaitée.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>L’ensemble du TD a été effectué et peut être testé directement en ligne en suivant le lien approprié.</p>
-
-<h2 id="liens-utiles">Liens utiles</h2>
-
-<p><a href="http://www.labri.fr/perso/pbenard/teaching/rvra/td1.html">Sujet du TD</a></p>
-
-<p><a href="/demo/rvra-td1/">Demo du rendu final</a></p>
-
-<p><a href="https://github.com/adelpeyroux/adelpeyroux.github.io/tree/master/demo/rvra-td1">Code source du rendu final</a></p>
-
-<p><a href="/assets/archives/rvra/rva_td1_delpeyroux.zip">Archive contenant le code source</a></p>
-
+                
 
             </article>
 
@@ -435,17 +356,17 @@
 
     <h3>Share</h3>
 
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/rvra-td1/%20via%20&#64;&hashtags=semester9,rvra,webGL,three.js,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/sia-materials/%20via%20&#64;&hashtags=semester9,sia,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
 
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/rvra-td1/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/sia-materials/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
 
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/rvra-td1/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/sia-materials/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -467,7 +388,7 @@
         disqus_loaded = true;
         var disqus_shortname = 'arnaud-delpeyroux-blog';
         var disqus_title = '';
-        var disqus_url = '/rvra-td1/';
+        var disqus_url = '/sia-materials/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
