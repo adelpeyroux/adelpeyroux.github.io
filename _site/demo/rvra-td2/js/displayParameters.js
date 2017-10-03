@@ -18,8 +18,6 @@ var displayParameters = {
     let w = this.screenResolutionWidth;
     let h = this.screenResolutionHeight;
     let diag = this.screenDiagonal;
-    
-    let ratio = this.aspectRatio;
 
     let nbPixDiag = Math.round(Math.sqrt(w*w + h*h));
 

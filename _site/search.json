@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Virtual Reality and Augmented Reality - Course 3",
+      "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Courses",
+      "tags"     : "semester9 and rvra",
+      "url"      : "/rvra-course-3/",
+      "date"     : "29 Sep 2017"
+    } ,
+  
+    {
       "title"    : "Advanced Image synthesis - Materials",
       "category" : "Semester 9Advanced Image Synthesis CoursesAdvanced Image Synthesis",
       "tags"     : "semester9 and sia",
@@ -30,6 +38,14 @@
       "tags"     : "",
       "url"      : "/presentation-1/",
       "date"     : "22 Sep 2017"
+    } ,
+  
+    {
+      "title"    : "Virtual Reality and Augmented Reality - Practice 2",
+      "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Practices",
+      "tags"     : "semester9, rvra, webGL, three.js, anaglyph, dof, and datGUIVR",
+      "url"      : "/rvra-td2/",
+      "date"     : "19 Sep 2017"
     } ,
   
     {

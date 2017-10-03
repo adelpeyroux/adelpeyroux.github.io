@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Advanced Image synthesis - Materials</title>
+    <title>Virtual Reality and Augmented Reality - Course 3</title>
 
     <meta name="description" content="">
 
@@ -15,7 +15,7 @@
     <!-- Social Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Advanced Image synthesis - Materials">
+    <meta name="twitter:title" content="Virtual Reality and Augmented Reality - Course 3">
     <meta name="twitter:description" content="">
 
     
@@ -23,8 +23,8 @@
     
 
     <!-- Social Facebook/Open Graph -->
-    <meta property="og:url" content="http://localhost:4000/sia-materials/">
-    <meta property="og:title" content="Advanced Image synthesis - Materials">
+    <meta property="og:url" content="http://localhost:4000/rvra-course-3/">
+    <meta property="og:title" content="Virtual Reality and Augmented Reality - Course 3">
     
     <meta property="og:image" content="http://localhost:4000">
     
@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Arnaud Delpeyroux's blog">
 
     <!-- Social Google+/Schema.org  -->
-    <meta itemprop="name" content="Advanced Image synthesis - Materials"/>
+    <meta itemprop="name" content="Virtual Reality and Augmented Reality - Course 3"/>
     <meta itemprop="description" content="">
     <meta itemprop="image" content="http://localhost:4000/assets/img/blog-image.png"/>
 
@@ -63,7 +63,7 @@
 
     <link rel="stylesheet" href="/assets/css/main.css">
      <link rel="stylesheet" href="/assets/css/custom.css">
-    <link rel="canonical" href="http://localhost:4000/sia-materials/">
+    <link rel="canonical" href="http://localhost:4000/rvra-course-3/">
     <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="http://localhost:4000/feed.xml" />
 
     <script type="text/javascript" async
@@ -100,7 +100,7 @@
     
     <ul>
       <li><span>1</span></li>
-      <li><span> /sia-materials/</span></li>
+      <li><span> /rvra-course-3/</span></li>
       <li><span>⌘ blogspace λ </span></li>
       <li><span>* Menu</span></li>
     </ul>
@@ -362,58 +362,185 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
             
                 <div class="time">
-                    <time itemprop="datePublished" datetime="2017-09-27 11:30:00 +0200">27 Sep 2017</time>
+                    <time itemprop="datePublished" datetime="2017-09-29 08:00:00 +0200">29 Sep 2017</time>
                 </div>
             
-            <h1 class="post-title" itemprop="name">Advanced Image synthesis - Materials</h1>
+            <h1 class="post-title" itemprop="name">Virtual Reality and Augmented Reality - Course 3</h1>
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <h1 id="brdf-et-au-dela">BRDF et au dela</h1>
+                <h1 id="historique">Historique</h1>
 
-<p>Plan :</p>
+<h2 id="les-racines">Les racines</h2>
+
+<h3 id="la-vision">La vision</h3>
+
+<p><strong>Antiquité : Egypte</strong></p>
+
+<p>Personnage :</p>
+<ul>
+  <li>buste de face</li>
+  <li>tete et jambes de profil</li>
+  <li>taille dépendant de l’importance</li>
+</ul>
+
+<p>Objets vus de profil et de dessus
+Pas de perspective</p>
+
+<p>La perspective apparait tres tard dans l’humanité (Italie - Renaissance).</p>
+
+<p><strong>Panorama</strong> :</p>
+
+<p>Gu Hongzhong : Night revels of Han Xizai : premier exemple de panorama</p>
+
+<p>Robert Barker : apporte une definition et le definit tel que :</p>
+<ul>
+  <li>forme circulaire</li>
+  <li>éclairage par le haut</li>
+  <li>spectateur placé au centre</li>
+</ul>
+
+<p><strong>Cyclorama</strong></p>
+
+<p>Construction de batiments cylindriques
+Paul Philippoteaux (1846 - 1923), peintre francais.
+1883: Gettysburg battle, 360°
+1962: installation au musée de Gettysburg.</p>
+
+<p><strong>Kinetoscope</strong></p>
+
+<p>Eddison, 1889.</p>
+
+<p><strong>Cinéorama</strong></p>
+
+<p>1900 : Expo universelle à Paris
+Cinéma + cyclorama
+1à projecteurs + 10 écrans 9x9m</p>
+
+<p><strong>Vision stéréoscopique</strong></p>
+
+<p>1838 : Stereoscope, C Wheatstone
+1844 : View master, D. Brewster</p>
+
+<p><strong>Cinema stéreo</strong></p>
+
+<p>1922 : Teleview, F. Hamond &amp; Cassidy : 2 caméras et deux projecteirs synchronisés.</p>
+
+<p><strong>Sensorama</strong></p>
+
+<p>M. Heiling</p>
+
+<p>Cinema of the future !</p>
+<ul>
+  <li>Viseur binoculaire</li>
+  <li>Guidon, siege mobile</li>
+  <li>2 bouches d’air</li>
+  <li>2 HP stéreo</li>
+  <li>Diffuseur d’odeurs</li>
+</ul>
+
+<p>5 séquences
+Vidéo</p>
+
+<p><strong>Telesphere mask</strong></p>
+
+<p>M. Heiling
+Brevet des casques de VR</p>
+
+<p><strong>Experience theater</strong></p>
+
+<p>sieges de theatre sur verins avec des HP intégrés pour augmenter l’immersion.</p>
+
+<h3 id="constat">Constat</h3>
+
+<p>Perspective, immersion, stéréo mais representation figée ==&gt; spectateur passif</p>
+
+<h3 id="i-sutherland-t-furner">I. Sutherland, T. Furner</h3>
+
+<p><strong>Ivan Sutherland</strong></p>
+
+<p>1967, Prof à Harvard
+The sword of damocles : premier casque de VR qui a fonctionné</p>
+
+<p><strong>Frederic Brooks</strong></p>
+
+<p>Notion de retour d’efforts.</p>
+
+<p><strong>GROPE III - F. Brooks - 1986</strong>
+création de molecules par assemblage, simulation de resistabces des structures.</p>
+
+<h2 id="les-applications">Les applications</h2>
+
+<h3 id="les-simulateurs">Les simulateurs</h3>
+
+<p><strong>Simulateurs de vol</strong></p>
+
+<p>1910 : Tonneau Antoinette, plateforme mobile, mouvement guidés par les commandes.</p>
+
+<p>Simulateur LINK : premier simulatuer un peu cool</p>
+
+<p>1940 : Investissemnts massifs pour econnomiser des couts liés aux destructions d’avions en combat
+==&gt; création d’une industrie nouvelle</p>
+
+<p>50’s : apparition des cameras video</p>
+<ul>
+  <li>montées sur des plateformes suspendues au dessus de maquettes</li>
+  <li>controllées par les commandes du pilote</li>
+</ul>
+
+<p>60’s images générées par des ordinateurs</p>
+<ul>
+  <li>modelisation 3D des scenes</li>
+  <li>fréquence d’environ 20 images/s</li>
+</ul>
+
+<p><strong>La NASA</strong></p>
+
+<p>1981: M. Mac Greevy</p>
+<ul>
+  <li>proposition de developpement d’une ST virtuelle</li>
+  <li>réponse : 10 000$</li>
+</ul>
+
+<p>Comercialisation Sony Watchman (LCD 100x100)</p>
+<ul>
+  <li>masque de plongée + 2 ecrans Watchman</li>
+  <li>2 cameras / K7 vidéo</li>
+  <li>-&gt; demo Virtual Visual Environment Display (VIVED)</li>
+</ul>
+
+<p><strong>VPL Research</strong></p>
+
+<p>1982 : labo de recherche de Atari</p>
+
+<p>Data Glove, eye Phone, Audio Sphere</p>
+
+<h3 id="les-jeux-videos">Les jeux videos</h3>
+
+<h2 id="aplications-">Aplications :</h2>
+
+<h3 id="pour-concevoir">Pour concevoir</h3>
 
 <ul>
-  <li>Modelisation de l’apparence
+  <li>Des objets :
     <ul>
-      <li>Aperçu des modeles en CG</li>
-      <li>Modèles de reflectance (BRDF)</li>
-      <li>Mesures de la reflectance (BRDF)</li>
+      <li>un batiment, son utilisation, son fonctionnement</li>
+      <li>un quartier, son amenagement</li>
+      <li>un avion, une voiture, l’ergonomie du pilotage d’un camion</li>
+      <li>une structure moléculaire</li>
+      <li>une histoire, un scenario</li>
+    </ul>
+  </li>
+  <li>Des gestes complexes :
+    <ul>
+      <li>un geste industriel</li>
+      <li>simulation médicale</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="apparence">Apparence</h2>
+<h3 id="pour-apprendre">Pour apprendre</h3>
 
-<p>L’apparence depend de la position, drection, teps et longueur d’onde</p>
-
-<p>Modelise :</p>
-<ul>
-  <li>Réflexion</li>
-  <li>Transmission/Refraction</li>
-  <li>Fluorescence et Phosphorescece</li>
-  <li>Transluence / et effets volumiques (subsurface scattering)</li>
-  <li>Transfers d’énergie entre longueurs d’ondes</li>
-</ul>
-
-<p>Fonction à haute dimension -&gt; Complexe à utiliser</p>
-
-<h2 id="bssrdf">BSSRDF</h2>
-
-<p>[Jimenez 2010] Modelisation de la peau réaliste en temps réel</p>
-
-<h2 id="sv-brdf">SV-BRDF</h2>
-
-<p>Simplificatrion de la BSSRDF</p>
-<ul>
-  <li>Pas de transmission / refraction ou subsurface scattering</li>
-  <li>Dépendance angulaire et spatiales</li>
-</ul>
-
-<h2 id="brdf">BRDF</h2>
-
-<p>Modelise comment le materiau réfléchit la lumiere</p>
-
-<p>Aucune dépendance spatiale mais dépend de la longueur d’onde de la lumiere.</p>
+<p>Apprendre le pilotage</p>
 
             </article>
 
@@ -421,17 +548,17 @@
 
     <h3>Share</h3>
 
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/sia-materials/%20via%20&#64;&hashtags=semester9,sia,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/rvra-course-3/%20via%20&#64;&hashtags=semester9,rvra,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
 
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/sia-materials/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/rvra-course-3/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
 
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/sia-materials/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/rvra-course-3/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -453,7 +580,7 @@
         disqus_loaded = true;
         var disqus_shortname = 'arnaud-delpeyroux-blog';
         var disqus_title = '';
-        var disqus_url = '/sia-materials/';
+        var disqus_url = '/rvra-course-3/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

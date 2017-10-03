@@ -7,6 +7,8 @@ function AnaglyphRenderer ( renderer ) {
   this.cameraRight.matrixAutoUpdate = false;
 
   this.right = false;
+
+  this.dofRenderer = new DoFRenderer( renderer );
   
   this.update = function ( camera ) {
     camera.updateMatrixWorld();
@@ -48,7 +50,7 @@ function AnaglyphRenderer ( renderer ) {
     let glContext = renderer.domElement.getContext( 'webgl' );
 
     // Rendering for left eye (red)
-
+    glContext.colorMask(true, false, false, true);
     renderer.render(scene, this.cameraLeft);
 
     // Between the eyes
@@ -72,5 +74,25 @@ function AnaglyphRenderer ( renderer ) {
     this.update(camera);
 
     renderer.render(scene, this.cameraLeft);
+  };
+
+  this.renderBlur = function (scene, camera) {
+    this.update(camera);
+
+    let glContext = renderer.domElement.getContext( 'webgl' );
+
+    // Rendering for left eye (red)
+    glContext.colorMask(true, false, false, true);
+    this.dofRenderer.render(scene, this.cameraLeft);
+
+    // Between the eyes
+    this.dofRenderer.clearDepth();
+
+    // Rendering for right eye (cyan = blue + green)
+    glContext.colorMask(false, true, true, true);
+    this.dofRenderer.render(scene, this.cameraRight);
+
+    // After all we reset the color mask
+    glContext.colorMask(true, true, true, true);
   };
 }

@@ -21,7 +21,9 @@ var RENDERING_MODE = {
   NORMAL: 0,
   ANAGLYPH : 1,
   ANA_RIGHT : 3,
-  ANA_LEFT : 2
+  ANA_LEFT : 2,
+  BLUR : 4,
+  ANA_BLUR : 5
 };
 
 var renderingMethod = RENDERING_MODE.NORMAL;
@@ -285,6 +287,8 @@ function render() {
 
   renderer.clear();
 
+  let glContext = renderer.domElement.getContext( 'webgl' );
+  glContext.colorMask(true, true, true, true);
   
   switch (renderingMethod) {
   case RENDERING_MODE.NORMAL :
@@ -298,6 +302,12 @@ function render() {
     break;
   case RENDERING_MODE.ANA_RIGHT :
     anaglyphRenderer.renderRight(scene, camera);
+    break;
+  case RENDERING_MODE.BLUR :
+    dofRenderer.render(scene, camera);
+    break;
+  case RENDERING_MODE.ANA_BLUR :
+    anaglyphRenderer.renderBlur(scene, camera);
     break;
   }
   

@@ -1,0 +1,33 @@
+
+
+Retirer les gros objets d'une image en "bouchant" les trous à l'aide des bonnes valeurs.
+
+2 classes d'algos :
+
+Basée sur l'exemple : preserve les textures
+Basé sur la difusion : preserve les contours (structures)
+
+Approche basé exemple
+
+Cela peut preserver aussi les stryctures. Pour ce faire il faut choisir le bon ordre de traitement des pixels.
+
+Concept de priorité par patch.
+
+Pondéré par une fonction de confiance et une fonction d'attache aux données
+
+On commence d'abord par des zones ou les pixels ont de nombreux voisons pour servir d'exemple (forte confiance)
+
+Algo :
+On choisis la zone a remplacer
+A chaque iteration :
+ si on a un front de remplissage on y va
+  On calcul pour chaque pixel de la zone de remplissage sa priorité.
+  On prent le pixel avec la plus grande priorité.
+  On chercher dans l'image d'origine le patch qui correspond au mieux au patch courant
+  On remplis le patch avec les bonnes valeur
+  On met tout a jours
+
+
+Algo rapide, sans floues avec propagations des textures et structures.
+
+Pas de distinction entre les differents plans de l'images et perte des courbures dans l'image

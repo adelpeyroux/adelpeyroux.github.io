@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Advanced Image synthesis - Materials</title>
+    <title>Virtual Reality and Augmented Reality - Practice 2</title>
 
     <meta name="description" content="">
 
@@ -15,7 +15,7 @@
     <!-- Social Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Advanced Image synthesis - Materials">
+    <meta name="twitter:title" content="Virtual Reality and Augmented Reality - Practice 2">
     <meta name="twitter:description" content="">
 
     
@@ -23,8 +23,8 @@
     
 
     <!-- Social Facebook/Open Graph -->
-    <meta property="og:url" content="http://localhost:4000/sia-materials/">
-    <meta property="og:title" content="Advanced Image synthesis - Materials">
+    <meta property="og:url" content="http://localhost:4000/rvra-td2/">
+    <meta property="og:title" content="Virtual Reality and Augmented Reality - Practice 2">
     
     <meta property="og:image" content="http://localhost:4000">
     
@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Arnaud Delpeyroux's blog">
 
     <!-- Social Google+/Schema.org  -->
-    <meta itemprop="name" content="Advanced Image synthesis - Materials"/>
+    <meta itemprop="name" content="Virtual Reality and Augmented Reality - Practice 2"/>
     <meta itemprop="description" content="">
     <meta itemprop="image" content="http://localhost:4000/assets/img/blog-image.png"/>
 
@@ -63,7 +63,7 @@
 
     <link rel="stylesheet" href="/assets/css/main.css">
      <link rel="stylesheet" href="/assets/css/custom.css">
-    <link rel="canonical" href="http://localhost:4000/sia-materials/">
+    <link rel="canonical" href="http://localhost:4000/rvra-td2/">
     <link rel="alternate" type="application/rss+xml" title="Arnaud Delpeyroux's blog" href="http://localhost:4000/feed.xml" />
 
     <script type="text/javascript" async
@@ -100,7 +100,7 @@
     
     <ul>
       <li><span>1</span></li>
-      <li><span> /sia-materials/</span></li>
+      <li><span> /rvra-td2/</span></li>
       <li><span>⌘ blogspace λ </span></li>
       <li><span>* Menu</span></li>
     </ul>
@@ -362,58 +362,100 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
             
                 <div class="time">
-                    <time itemprop="datePublished" datetime="2017-09-27 11:30:00 +0200">27 Sep 2017</time>
+                    <time itemprop="datePublished" datetime="2017-09-19 14:00:00 +0200">19 Sep 2017</time>
                 </div>
             
-            <h1 class="post-title" itemprop="name">Advanced Image synthesis - Materials</h1>
+            <h1 class="post-title" itemprop="name">Virtual Reality and Augmented Reality - Practice 2</h1>
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <h1 id="brdf-et-au-dela">BRDF et au dela</h1>
+                <h1 id="td2---stéréoscopie-et-profondeur-de-champ">TD2 - Stéréoscopie et profondeur de champ</h1>
 
-<p>Plan :</p>
+<h2 id="stéréoscopie">Stéréoscopie</h2>
+
+<h3 id="principe-général">Principe général</h3>
+
+<p>Afin de rendre possible le rendue stéréoscopique on effectue les opérations suivantes :</p>
 
 <ul>
-  <li>Modelisation de l’apparence
-    <ul>
-      <li>Aperçu des modeles en CG</li>
-      <li>Modèles de reflectance (BRDF)</li>
-      <li>Mesures de la reflectance (BRDF)</li>
-    </ul>
-  </li>
+  <li>On crée deux caméra a partir de la caméra de base. Ces deux camera devront etre espacées de la bonne distance (distance entre les deux yeux).</li>
+  <li>Pour chacune de ces caméra, on construit les cones de visons. Cette étape est effectué grace aux formules présentes dans <a href="https://stanford.edu/class/ee267/lectures/lecture6.pdf">ces diapos</a>. Lors de cette étape il est important de connaitre certaines grandeur physiques liées à notre écran</li>
 </ul>
 
-<h2 id="apparence">Apparence</h2>
+<p>A l’aide de cela on peut tres bien effectuer independament des rendu à l’aide de l’une ou l’autre camera. Ceci est équivalent à observer la scene avec un oeil ou un autre. Ainsi on peut obtenir les image suivantes (au centre le rendu normal, a gauche le rendu de l’oeil gauche et a droite celui de l’oeil droit) :</p>
 
-<p>L’apparence depend de la position, drection, teps et longueur d’onde</p>
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/assets/img/rvra/td2/normal_left.png" alt="left" /></td>
+      <td><img src="/assets/img/rvra/td2/normal_center.png" alt="left" /></td>
+      <td><img src="/assets/img/rvra/td2/normal_right.png" alt="left" /></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Modelise :</p>
+<h3 id="anaglyphe">Anaglyphe</h3>
+
+<p>Pour réaliser un rendu anaglyphique il nous faut afficher les rendu de chaque camera dans des canaux de couleurs differents. On utilisera le canal rouge pour le rendu gauchet et les canaux vert et bleu (cyan) pour le rendu droit. Ceci est effectuer grace au code suivant :</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">render</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">camera</span><span class="p">);</span>
+
+    <span class="kd">let</span> <span class="nx">glContext</span> <span class="o">=</span> <span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span> <span class="s1">'webgl'</span> <span class="p">);</span>
+
+    <span class="c1">// Rendering for left eye (red)</span>
+    <span class="nx">glContext</span><span class="p">.</span><span class="nx">colorMask</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">scene</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">cameraLeft</span><span class="p">);</span>
+
+    <span class="c1">// Between the eyes</span>
+    <span class="nx">renderer</span><span class="p">.</span><span class="nx">clearDepth</span><span class="p">();</span>
+
+    <span class="c1">// Rendering for right eye (cyan = blue + green)</span>
+    <span class="nx">glContext</span><span class="p">.</span><span class="nx">colorMask</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">scene</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">cameraRight</span><span class="p">);</span>
+
+    <span class="c1">// After all we reset the color mask</span>
+    <span class="nx">glContext</span><span class="p">.</span><span class="nx">colorMask</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="p">};</span></code></pre></figure>
+
+<p>Grace a cela on obtient le résultat suivant :</p>
+
+<p><img src="/assets/img/rvra/td2/anaglyph.png" alt="anaglyph" /></p>
+
+<h2 id="profondeur-de-champs">Profondeur de champs</h2>
+
+<h3 id="rendu-avec-profondeur-de-champ">Rendu avec profondeur de champ</h3>
+
+<p>Afin d’appliquer la profondeur de champ il nous faut pouvoir evaluer la distance d’un fragment à l’observateur. Puis à l’aide de cette distance calculer le rayon du cercle de convolution (importance du flou) en ce fragment. Enfin à l’aide de ce rayon, pour chaque fragment, parcourir les pixels voisins et moyenner leurs couleur pour obtenir un flou. Ceci ressemble beaucoup à l’application d’un filtre moyenneur sur notre rendu mais donc la taille du filtre dépend de la distance du fragment.</p>
+
+<p>Cette méthode est mise en oeuvre de la maniere suivante :</p>
 <ul>
-  <li>Réflexion</li>
-  <li>Transmission/Refraction</li>
-  <li>Fluorescence et Phosphorescece</li>
-  <li>Transluence / et effets volumiques (subsurface scattering)</li>
-  <li>Transfers d’énergie entre longueurs d’ondes</li>
+  <li>On effectue un premier rendu dans un buffer pour obtenir deux choses. La carte de profondeur de notre rendu (essentielle pour evaluer la distance des fragments). Et le rendu lui même pour avoir l’information de couleur des pixels voisins pour chaque pixel.</li>
+  <li>Puis on fait une seconde passe qui va venir appliquer notre floue à l’aide d’un <a href="https://github.com/adelpeyroux/adelpeyroux.github.io/tree/master/demo/rvra-td2/shaders/shaderDof.frag">fragment shader</a>.</li>
 </ul>
 
-<p>Fonction à haute dimension -&gt; Complexe à utiliser</p>
+<p>Noter que l’on peut directement (dans le cas d’une vue à la première personne) evaluer la distance focale directement depuis la depthMap aux coordonées (0.5, 0.5) pour obtenir une profondeur de champs par rapport a l’endroit ou l’on vise.</p>
 
-<h2 id="bssrdf">BSSRDF</h2>
+<p>Ceci nous donne le resultat suivant :</p>
 
-<p>[Jimenez 2010] Modelisation de la peau réaliste en temps réel</p>
+<p><img src="/assets/img/rvra/td2/blur.png" alt="anaglyph" /></p>
 
-<h2 id="sv-brdf">SV-BRDF</h2>
+<p>De plus, on peut combiner le rendu anaglyphique et la profondeur de champ pour obtenir le résultat suivant :</p>
 
-<p>Simplificatrion de la BSSRDF</p>
-<ul>
-  <li>Pas de transmission / refraction ou subsurface scattering</li>
-  <li>Dépendance angulaire et spatiales</li>
-</ul>
+<p><img src="/assets/img/rvra/td2/ana_blur.png" alt="anaglyph and blur" /></p>
 
-<h2 id="brdf">BRDF</h2>
+<h2 id="liens-utiles">Liens utiles</h2>
 
-<p>Modelise comment le materiau réfléchit la lumiere</p>
+<p><a href="http://www.labri.fr/perso/pbenard/teaching/rvra/td2.html">Sujet du TD</a></p>
 
-<p>Aucune dépendance spatiale mais dépend de la longueur d’onde de la lumiere.</p>
+<p><a href="http://paulbourke.net/stereographics/stereorender/">Paul Bourke article</a></p>
+
+<p><a href="https://stanford.edu/class/ee267/lectures/lecture6.pdf">Gordon Wetestein slides</a></p>
+
+<p><a href="https://github.com/adelpeyroux/adelpeyroux.github.io/tree/master/demo/rvra-td2">Code source du rendu final</a></p>
+
+<p><a href="/demo/rvra-td2/">Demo du rendu final</a></p>
+
+<p><a href="/assets/archives/rvra/rva_td2_delpeyroux.zip">Archive contenant le code source</a></p>
 
             </article>
 
@@ -421,17 +463,17 @@
 
     <h3>Share</h3>
 
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/sia-materials/%20via%20&#64;&hashtags=semester9,sia,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/rvra-td2/%20via%20&#64;&hashtags=semester9,rvra,webGL,three.js,anaglyph,dof,datGUIVR,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
 
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/sia-materials/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/rvra-td2/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
 
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/sia-materials/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/rvra-td2/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -453,7 +495,7 @@
         disqus_loaded = true;
         var disqus_shortname = 'arnaud-delpeyroux-blog';
         var disqus_title = '';
-        var disqus_url = '/sia-materials/';
+        var disqus_url = '/rvra-td2/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
