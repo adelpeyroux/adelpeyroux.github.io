@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>RVRA TD3</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+
+	<body>
+		<div id="info">
+
+		</div>
+		<!-- external libraries -->
+		<script src="js/libs/three.min.js"></script>
+		<script src="js/libs/Detector.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+		<script src='js/libs/dat.gui.min.js'></script>
+		<script src="js/libs/cv.js"></script>
+
+		<!-- internal scripts -->
+		<script src="js/load.js"></script>
+		<script src="js/render.js"></script>
+
+		<script>
+
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+			window.onload = onLoad;
+
+		</script>
+
+
+		<video id="video" width=640 height=480 autoplay="true" style="display:none;"></video>
+
+		<div style="width: 100%; overflow: hidden;">
+    	<canvas id="canvas" style="width: 640px; height: 480px; float: left;"></canvas>
+			<div id="container" style="width: 640px; height: 480px; margin-left: 650px;"></div>
+		</div>
+
+	</body>
+</html>

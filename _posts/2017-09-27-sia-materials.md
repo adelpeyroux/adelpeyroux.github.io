@@ -51,3 +51,22 @@ Simplificatrion de la BSSRDF
 Modelise comment le materiau réfléchit la lumiere
 
 Aucune dépendance spatiale mais dépend de la longueur d'onde de la lumiere.
+
+
+
+
+
+
+# TODO 
+
+Contre exemple de pourquoi le modele de phong ne conserve pas l'energie.
+
+$$ \int _{\phi = 0} ^{2 * \pi} \int _{\theta = 0} ^{\frac{\pi}{2}} cos(\theta) sin(\theta) d \theta d \phi  $$ 
+
+Quel est le domaine de $$ \phi d$$ -> $$[0,\pi]$$
+
+
+# ICI 
+
+
+$$ D(N _1, N _2) = \sum _{p\ in\ N} { (R _1 (p) - R _2 (p)) ^2 + (G _1 (p) - G _2 (p)) ^2 + (B _1 (p) - B _2 (p)) ^2 } $$

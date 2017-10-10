@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/rvra-course-3/</loc>
+		<loc>http://localhost:4000/rvra-course-3/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/sia-materials/</loc>
+		<loc>http://localhost:4000/sia-materials/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/aivi-course-3/</loc>
+		<loc>http://localhost:4000/aivi-course-3/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/texture-synthesis/</loc>
+		<loc>http://localhost:4000/texture-synthesis/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/presentation-1/</loc>
+		<loc>http://localhost:4000/presentation-1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/rvra-td2/</loc>
+		<loc>http://localhost:4000/rvra-td2/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/aivi-course-2/</loc>
+		<loc>http://localhost:4000/aivi-course-2/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/rvra-td1/</loc>
+		<loc>http://localhost:4000/rvra-td1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/rvra-course-1/</loc>
+		<loc>http://localhost:4000/rvra-course-1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/aivi-lab1/</loc>
+		<loc>http://localhost:4000/aivi-lab1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/aip-td1/</loc>
+		<loc>http://localhost:4000/aip-td1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/sia-td1-sampling/</loc>
+		<loc>http://localhost:4000/sia-td1-sampling/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/sia-monte-carlo/</loc>
+		<loc>http://localhost:4000/sia-monte-carlo/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/sia-course-intro/</loc>
+		<loc>http://localhost:4000/sia-course-intro/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/iaiv-course-1/</loc>
+		<loc>http://localhost:4000/iaiv-course-1/</loc>
 	  </url>
 	
 	  <url>
-		<loc>https://adelpeyroux.github.io/reunion-rentree/</loc>
+		<loc>http://localhost:4000/reunion-rentree/</loc>
 	  </url>
 	
 </urlset>
