@@ -69,3 +69,10 @@ function relativePosition(absX, absY, elt) {
   return { x: absX - pos.x,
 	   y: absY - pos.y };
 }
+
+
+function dist (p1, p2) {
+  let v = {x: p2.x - p1.x, y: p2.y - p1.y};
+  
+  return Math.sqrt( v.x * v.x + v.y * v.y);
+}

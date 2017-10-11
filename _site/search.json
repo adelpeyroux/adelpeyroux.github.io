@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Initiation à la recherche",
+      "category" : "Semester 9Initiation à la recherche",
+      "tags"     : "semester9 and ir",
+      "url"      : "/initiation-recherche/",
+      "date"     : "10 Oct 2017"
+    } ,
+  
+    {
       "title"    : "Virtual Reality and Augmented Reality - Course 3",
       "category" : "Semester 9Virtual reality Augmented realityVirtual reality Augmented reality - Courses",
       "tags"     : "semester9 and rvra",

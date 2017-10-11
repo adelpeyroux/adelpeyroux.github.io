@@ -91,7 +91,47 @@ function animate() {
 
     
     if(menu.threshold) {
-      CV.thresholdHSV(imageData, imageDst, menu.color.h, menu.tolerance, menu.minSV, menu.maxSV);
+      let threshold = new ImageData(canvas.width, canvas.height);
+      let binarized = new ImageData(canvas.width, canvas.height);
+      
+      CV.thresholdHSV(imageData, threshold, menu.color.h, menu.tolerance, menu.minSV, menu.maxSV);
+      CV.extract(threshold, binarized, 0);
+
+      let tmp = new ImageData(canvas.width, canvas.height);
+      
+      let polys = CV.findContours(binarized, tmp);
+
+      let circle;
+      let max_r = 0;
+      for (let pol of polys) {
+	let x = 0;
+	let y = 0;
+	for (let pt of pol) {
+	  x += pt.x / pol.length;
+	  y += pt.y / pol.length;
+	}
+	let ctr = {x: x, y: y};
+	
+	let r = 0;
+	for (let pt of pol) {
+	  let curr_d = dist(ctr, pt);
+	  if (r < curr_d) {
+	    r = curr_d;
+	  }
+	}
+
+	if (r > max_r) {
+	  max_r = r;
+	  circle = {center: ctr, radius: r};
+	}
+      }
+
+      context.beginPath();
+      context.strokeStyle = 'red';
+      context.arc(circle.center.x, circle.center.y, circle.radius, 0, 2 * Math.PI);
+      context.stroke();
+      
+      imageDst.data.set(threshold.data);
     } else {
       imageDst.data.set(imageData.data);
     }
