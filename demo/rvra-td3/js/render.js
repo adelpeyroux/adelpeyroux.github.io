@@ -2,6 +2,18 @@ var canvas, context, imageData, imageDst;
 
 var renderer;
 
+var cameraMatrix = new THREE.Matrix3().set( 536.71872, 0., 319.5,
+					    0., 536.71872, 239.5,
+					    0., 0., 1. );
+
+var focal = 536.71872; // in pixels
+var halfHeight = 239.5; // in pixels
+var halfWidth = 319.5; // in pixels
+
+var realRadius = 90; // in minimeters
+
+var distorsionMatrix = [ -.23713, .15728, 0., 0., -.08766 ];
+
 var Menu = function() {
   this.threshold = false;
   this.color = { h: 124, s: 0.9, v: 0.3 }; // Hue, saturation, value
@@ -101,7 +113,7 @@ function animate() {
       
       let polys = CV.findContours(binarized, tmp);
 
-      let circle;
+      let circle = null;
       let max_r = 0;
       for (let pol of polys) {
 	let x = 0;
@@ -126,11 +138,19 @@ function animate() {
 	}
       }
 
-      context.beginPath();
-      context.strokeStyle = 'red';
-      context.arc(circle.center.x, circle.center.y, circle.radius, 0, 2 * Math.PI);
-      context.stroke();
-      
+      if (circle) {
+	let zValue = realRadius * focal / circle.radius;
+	let yValue = (circle.center.y - halfHeight) * zValue / focal;
+	let xValue = (circle.center.x - halfWidth)  * zValue / focal;
+
+	console.log(`x: ${xValue} y:${yValue} z:${zValue}`);
+
+	context.beginPath();
+	context.strokeStyle = 'red';
+	context.arc(circle.center.x, circle.center.y, circle.radius, 0, 2 * Math.PI);
+	context.stroke();
+
+      }
       imageDst.data.set(threshold.data);
     } else {
       imageDst.data.set(imageData.data);
