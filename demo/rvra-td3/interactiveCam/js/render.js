@@ -67,6 +67,8 @@ function init() {
   var fov = THREE.Math.radToDeg(Math.atan( displayParameters.screenSize().y/ displayParameters.distanceScreenViewer));
   camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, near, far );
 
+  camera.position.z = -1000;
+  
   cameraOrtho = new THREE.OrthographicCamera( - window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, - window.innerHeight / 2, 1, 10 );
   cameraOrtho.position.z = 10;
 
@@ -361,7 +363,7 @@ function render() {
 				    0,    0,    0,    1);
 
     new_proj_matrix.multiplyMatrices(new_proj_matrix, M);
-    new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
+    //new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
 
     camera.projectionMatrix = new_proj_matrix;
   }

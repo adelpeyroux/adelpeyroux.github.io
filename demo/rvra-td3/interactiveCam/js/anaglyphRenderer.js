@@ -11,7 +11,7 @@ function AnaglyphRenderer ( renderer ) {
   this.dofRenderer = new DoFRenderer( renderer );
   
   this.update = function ( camera ) {
-    camera.updateMatrixWorld();
+    //camera.updateMatrixWorld();
 
     let ipd = displayParameters.ipd;
     
