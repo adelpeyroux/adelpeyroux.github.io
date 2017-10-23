@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>RVRA TD2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+
+  <body onload="onLoad()">
+
+    <!-- external libraries -->
+    <script src="js/libs/three.min.js"></script>
+    <script src="js/libs/Detector.js"></script>
+    <script src="js/libs/stats.min.js"></script>
+    <script src='js/libs/TrackballControls.js'></script>
+    <script src='js/libs/PointerLockControls.js'></script>
+    <script src='js/libs/lockPointer.js'></script>
+
+    <script src='js/libs/dat.gui.min.js'></script>
+    <script src="js/libs/cv.js"></script>
+
+    <!-- internal scripts -->
+    <script src="js/displayParameters.js"></script>
+    <script src="js/vector_ops.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/cv_addons.js"></script>
+    <script src="js/load.js"></script>
+    <script src="js/marker_detector.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/anaglyphRenderer.js"></script>
+    <script src="js/dofRenderer.js"></script>
+
+    <script>
+
+      if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+      
+      lockPointer();
+
+    </script>
+
+    <video id="video" width=320 height=240 autoplay="true" style="display:none;"></video>
+
+
+  </body>
+</html>

@@ -103,55 +103,25 @@ function animate() {
 
     
     if(menu.threshold) {
-      let threshold = new ImageData(canvas.width, canvas.height);
-      let binarized = new ImageData(canvas.width, canvas.height);
+
+      let camParams = {focal: focal, halfHeight: halfHeight, halfWidth: halfWidth};
+      let params = {width: canvas.width, height: canvas.height,
+		hTarget: menu.color.h, tolerance: menu.tolerance,
+		minSV: menu.minSV, maxSV: menu.maxSV};
+
+      let circle = {center:{x:0, y:0}, radius: 0};
       
-      CV.thresholdHSV(imageData, threshold, menu.color.h, menu.tolerance, menu.minSV, menu.maxSV);
-      CV.extract(threshold, binarized, 0);
-
-      let tmp = new ImageData(canvas.width, canvas.height);
+      let pe = getMarkerPos(imageData, imageDst, realRadius, camParams, params, circle);
       
-      let polys = CV.findContours(binarized, tmp);
-
-      let circle = null;
-      let max_r = 0;
-      for (let pol of polys) {
-	let x = 0;
-	let y = 0;
-	for (let pt of pol) {
-	  x += pt.x / pol.length;
-	  y += pt.y / pol.length;
-	}
-	let ctr = {x: x, y: y};
-	
-	let r = 0;
-	for (let pt of pol) {
-	  let curr_d = dist(ctr, pt);
-	  if (r < curr_d) {
-	    r = curr_d;
-	  }
-	}
-
-	if (r > max_r) {
-	  max_r = r;
-	  circle = {center: ctr, radius: r};
-	}
-      }
-
       if (circle) {
-	let zValue = realRadius * focal / circle.radius;
-	let yValue = (circle.center.y - halfHeight) * zValue / focal;
-	let xValue = (circle.center.x - halfWidth)  * zValue / focal;
-
-	console.log(`x: ${xValue} y:${yValue} z:${zValue}`);
-
+	console.log(pe);
+	
 	context.beginPath();
 	context.strokeStyle = 'red';
 	context.arc(circle.center.x, circle.center.y, circle.radius, 0, 2 * Math.PI);
 	context.stroke();
 
       }
-      imageDst.data.set(threshold.data);
     } else {
       imageDst.data.set(imageData.data);
     }
