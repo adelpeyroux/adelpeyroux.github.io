@@ -363,7 +363,7 @@ function render() {
 				    0,    0,    0,    1);
 
     new_proj_matrix.multiplyMatrices(new_proj_matrix, M);
-    //new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
+    new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
 
     camera.projectionMatrix = new_proj_matrix;
   }
