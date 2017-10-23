@@ -334,26 +334,38 @@ function render() {
     let circle = {center:{x:0, y:0}, radius: 0};
     
     pe = getMarkerPos(imageData, imageDst, realRadius, camParams, params, circle);
+
+    
+    let va = VECTOR3.substract(pa, pe);
+    let vb = VECTOR3.substract(pb, pe);
+    let vc = VECTOR3.substract(pc, pe);
+
+    let vr = VECTOR3.normalized(VECTOR3.substract(pb, pa));
+    let vu = VECTOR3.normalized(VECTOR3.substract(pc, pa));
+    let vn = VECTOR3.cross(vr, vu);
+    
+    let d = - VECTOR3.dot(vn, va);
+    
+    let l = VECTOR3.dot(vr, va) * near / d;
+    let r = VECTOR3.dot(vr, vb) * near / d;
+    let b = VECTOR3.dot(vu, va) * near / d;
+    let t = VECTOR3.dot(vu, vc) * near / d;
+
+    //*
+    let new_proj_matrix = new THREE.Matrix4()
+	.makePerspective(l,r,t,b,near, 10000);
+
+    let M = new THREE.Matrix4().set(vr.x, vr.y, vr.z, 0,
+				    vu.x, vu.y, vu.z, 0,
+				    vn.x, vn.y, vn.z, 0,
+				    0,    0,    0,    1);
+
+    new_proj_matrix.multiplyMatrices(new_proj_matrix, M);
+    new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
+
+    camera.projectionMatrix = new_proj_matrix;
   }
 
-  let va = VECTOR3.substract(pa, pe);
-  let vb = VECTOR3.substract(pb, pe);
-  let vc = VECTOR3.substract(pc, pe);
-
-  let vr = VECTOR3.normalized(VECTOR3.substract(pb, pa));
-  let vu = VECTOR3.normalized(VECTOR3.substract(pc, pa));
-  let vn = VECTOR3.cross(vr, vu);
-  
-  let d = pe.z;
-  
-  let l = VECTOR3.dot(vr, va) * near / d;
-  let r = VECTOR3.dot(vr, vb) * near / d;
-  let b = VECTOR3.dot(vu, va) * near / d;
-  let t = VECTOR3.dot(vu, vc) * near / d;
-
-  //*
-  camera.projectionMatrix = new THREE.Matrix4()
-    .makePerspective(l,r,t,b,near, 10000);
   /*/
   camera.left = l;
   camera.right = r;

@@ -52,6 +52,6 @@ function getMarkerPos (imageSrc, imageDst, realRadius, camParams, params, circle
     xValue = (circle.center.x - camParams.halfWidth)  * zValue / camParams.focal;
   }
 
-  return {x: xValue, y: yValue, z:zValue};
+  return {x: xValue, y: yValue, z: zValue};
 
 }
