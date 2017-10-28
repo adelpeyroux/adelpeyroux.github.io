@@ -1,11 +1,10 @@
 var camera, controls, scene, renderer;
-var imageData;
 
-var anaglyphRenderer, dofRenderer;
-
-var container, stats, menu;
+var stereoRenderer;
 
 var cameraOrtho, sceneOrtho;
+
+var guiObj = { K1: 0.1, K2: 0.1 };
 
 var clock;
 
@@ -18,58 +17,18 @@ var pointerLocked = false;
 
 var velocity = new THREE.Vector3(0,0,0);
 
-var near = 1;
-var far = 100000;
-
-var focal = 536.71872; // in pixels
-var halfHeight = 239.5; // in pixels
-var halfWidth = 319.5; // in pixels
-var realRadius = 90; // in minimeters
-
-var pa = VECTOR3.create(-135,-192,0);
-var pb = VECTOR3.create(173,-192,0);
-var pc = VECTOR3.create(-135,-17,0);
-
-
-var Menu = function() {
-  this.trackMe = false;
-  this.color = { h: 203, s: 0.9, v: 0.3 }; // Hue, saturation, value
-  this.tolerance = 25.0;
-  this.minSV = 0.3;
-  this.maxSV = .8;
-  this.requestPointerLock = function() {document.body.requestPointerLock();};
-};
-
-
-var RENDERING_MODE = {
-  NORMAL: 0,
-  ANAGLYPH : 1,
-  ANA_RIGHT : 3,
-  ANA_LEFT : 2,
-  BLUR : 4,
-  ANA_BLUR : 5
-};
-
-var renderingMethod = RENDERING_MODE.NORMAL;
-
 function init() {
 
   clock = new THREE.Clock();
 
-  menu = new Menu();
-
-  
   container = document.createElement( 'div' );
   document.body.appendChild( container );
 
   // camera
 
-  var fov = THREE.Math.radToDeg(Math.atan( displayParameters.screenSize().y/ displayParameters.distanceScreenViewer));
-  camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, near, far );
+  var fov = THREE.Math.radToDeg(Math.atan( displayParameters.screenSize().y/ displayParameters.distanceScreenViewer()));
+  camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, 1, 100000 );
 
-  camera.position.z = 1000;
-  camera.position.y = 200;
-  
   cameraOrtho = new THREE.OrthographicCamera( - window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, - window.innerHeight / 2, 1, 10 );
   cameraOrtho.position.z = 10;
 
@@ -93,7 +52,7 @@ function init() {
 
   var cube_tnt = new THREE.Mesh( geometry, [mat_tnt1, mat_tnt1, mat_tnt2, mat_tnt2, mat_tnt1, mat_tnt1] );
   cube_tnt.position.y = 100;
-  cube_tnt.position.z = - displayParameters.distanceScreenViewer;
+  cube_tnt.position.z = - displayParameters.distanceScreenViewer();
   var cube_sand = new THREE.Mesh( geometry, mat_sand );
   cube_sand.position.y = -100;
   var cube_stonebrick = new THREE.Mesh( geometry, mat_stonebrick );
@@ -107,7 +66,7 @@ function init() {
       applyFaceColor( geom , cs.id );
       cs.geometry = geom;
       cs.position.x = j*100;
-      cs.position.z = k*100 - displayParameters.distanceScreenViewer;
+      cs.position.z = k*100 - displayParameters.distanceScreenViewer();
       scene.add( cs );
 
       var cm;
@@ -120,7 +79,7 @@ function init() {
       applyFaceColor( geom , cm.id );
       cm.geometry = geom;
       cm.position.x = j*100;
-      cm.position.z = k*100 - displayParameters.distanceScreenViewer;
+      cm.position.z = k*100 - displayParameters.distanceScreenViewer();
       scene.add( cm );
     }
   }
@@ -149,53 +108,38 @@ function init() {
   container.appendChild( renderer.domElement );
   renderer.autoClear = false;
 
-  anaglyphRenderer = new AnaglyphRenderer( renderer );
-  dofRenderer = new DoFRenderer( renderer );
+  stereoRenderer = new StereoRenderer( renderer );
 
   pickingTexture = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight );
   pickingTexture.texture.minFilter = THREE.LinearFilter;
 
-  // trackball
-
-  // controls = new THREE.TrackballControls( camera, renderer.domElement );
+  // Camera controler
   controls = new THREE.PointerLockControls( camera, renderer.domElement );
   scene.add( controls.getObject() );
   controls.enabled = true;
 
-  //
-  let gui = new dat.GUI();
-  gui.add(menu, 'trackMe');
-  gui.addColor(menu, 'color').listen();
-  gui.add(menu, 'tolerance', 0, 100);
-  gui.add(menu, 'minSV', 0, 1).step(0.05);
-  gui.add(menu, 'maxSV', 0, 1).step(0.05);
-  gui.add(menu, "requestPointerLock");
-
   var onKeyDown = function ( event ) {
 
     switch ( event.keyCode ) {
-    case 82 : // r, to switch rendering methods
-      renderingMethod = (renderingMethod + 1) % Object.keys(RENDERING_MODE).length ;
-      break;
-    case 38: // up
-    case 87: // w
-      moveForward = true;
-      break;
 
-    case 37: // left
-    case 65: // a
-      moveLeft = true;
-      break;
+      case 38: // up
+      case 87: // w
+        moveForward = true;
+        break;
 
-    case 40: // down
-    case 83: // s
-      moveBackward = true;
-      break;
+      case 37: // left
+      case 65: // a
+        moveLeft = true; break;
 
-    case 39: // right
-    case 68: // d
-      moveRight = true;
-      break;
+      case 40: // down
+      case 83: // s
+        moveBackward = true;
+        break;
+
+      case 39: // right
+      case 68: // d
+        moveRight = true;
+        break;
 
     }
 
@@ -205,25 +149,25 @@ function init() {
 
     switch( event.keyCode ) {
 
-    case 38: // up
-    case 87: // w
-      moveForward = false;
-      break;
+      case 38: // up
+      case 87: // w
+        moveForward = false;
+        break;
 
-    case 37: // left
-    case 65: // a
-      moveLeft = false;
-      break;
+      case 37: // left
+      case 65: // a
+        moveLeft = false;
+        break;
 
-    case 40: // down
-    case 83: // s
-      moveBackward = false;
-      break;
+      case 40: // down
+      case 83: // s
+        moveBackward = false;
+        break;
 
-    case 39: // right
-    case 68: // d
-      moveRight = false;
-      break;
+      case 39: // right
+      case 68: // d
+        moveRight = false;
+        break;
 
     }
 
@@ -231,6 +175,18 @@ function init() {
 
   document.addEventListener( 'keydown', onKeyDown, false );
   document.addEventListener( 'keyup', onKeyUp, false );
+
+  // GUI
+
+  var gui = new dat.GUI();
+  var controller = gui.add( guiObj, 'K1' );
+  controller.onChange(function(value) { 
+    stereoRenderer.setK1(value); 
+  } );
+  controller = gui.add( guiObj, 'K2' );
+  controller.onChange(function(value) { 
+    stereoRenderer.setK2(value); 
+  } );
 
   // stats
 
@@ -262,7 +218,7 @@ function onWindowResize() {
   cameraOrtho.bottom = - window.innerHeight / 2;
   cameraOrtho.updateProjectionMatrix();
 
-  dofRenderer.setSize( window.innerWidth, window.innerHeight );
+  stereoRenderer.setSize( window.innerWidth, window.innerHeight );
 
   render();
 }
@@ -311,114 +267,23 @@ function pick(event) {
 function render() {
 
   var delta = clock.getDelta();
- 
-  let pe = VECTOR3.create(0, 0, displayParameters.distanceScreenViewer);
-  
-  if (menu.trackMe && video && video.readyState === video.HAVE_ENOUGH_DATA){
 
-    let canvas2d = document.createElement("canvas");
-    canvas2d.style.width = "320px";
-    canvas2d.style.height = "240px";
-    
-    canvas2d.width = parseInt(canvas2d.style.width);
-    canvas2d.height = parseInt(canvas2d.style.height);
-    let context = canvas2d.getContext('2d');
-    
-    context.drawImage(video, 0, 0, canvas2d.width, canvas2d.height);
-    
-    let camParams = {focal: focal, halfHeight: halfHeight, halfWidth: halfWidth};
-    let params = {width: canvas2d.width, height: canvas2d.height,
-		  hTarget: menu.color.h, tolerance: menu.tolerance,
-		  minSV: menu.minSV, maxSV: menu.maxSV};
-    
-    let imageDst = new ImageData( params.width, params.height);
-    imageData = context.getImageData(0, 0, params.width, params.height);
-    
-    let circle = {center:{x:0, y:0}, radius: 0};
-    
-    pe = getMarkerPos(imageData, imageDst, realRadius, camParams, params, circle);
+  velocity.x -= velocity.x * 100.0 * delta;
+  velocity.z -= velocity.z * 100.0 * delta;
 
-    
-    let va = VECTOR3.substract(pa, pe);
-    let vb = VECTOR3.substract(pb, pe);
-    let vc = VECTOR3.substract(pc, pe);
+  if ( moveForward ) velocity.z -= 15000.0 * delta;
+  if ( moveBackward ) velocity.z += 15000.0 * delta;
 
-    let vr = VECTOR3.normalized(VECTOR3.substract(pb, pa));
-    let vu = VECTOR3.normalized(VECTOR3.substract(pc, pa));
-    let vn = VECTOR3.cross(vr, vu);
-    
-    let d = - VECTOR3.dot(vn, va);
-    
-    let l = -(window.innerWidth/2 - pe.x)* near / d;
-    let r = (window.innerWidth/2 + pe.x) * near / d;
-    let b = -(window.innerHeight/2 - pe.y) * near / d;
-    let t = (window.innerHeight/2 - pe.y) * near / d;
+  if ( moveLeft ) velocity.x -= 15000.0 * delta;
+  if ( moveRight ) velocity.x += 15000.0 * delta;
 
-    //*
-    
-    let new_proj_matrix = new THREE.Matrix4()
-	.makePerspective(l,r,t,b,near, 10000);
-    /*
-    let MT = new THREE.Matrix4().set(vr.x, vu.x, vn.x, 0,
-				    vr.y, vu.y, vn.y, 0,
-				    vr.z, vu.z, vn.z, 0,
-				    0,    0,    0,    1);
-
-    new_proj_matrix.multiplyMatrices(new_proj_matrix, MT);
-    new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
-
-*/
-    camera.projectionMatrix = new_proj_matrix;
-  }
-
-  /*/
-  camera.left = l;
-  camera.right = r;
-  camera.top = t;
-  camera.bottom = b;
-  camera.updateProjectionMatrix();
-  //*/
-  //camera.position = pe;
-  
-  
-  velocity.x -= velocity.x * 100.0 * delta / 10;
-  velocity.z -= velocity.z * 100.0 * delta / 10;
-
-  if ( moveForward ) velocity.z -= 15000.0 * delta / 10;
-  if ( moveBackward ) velocity.z += 15000.0 * delta / 10;
-
-  if ( moveLeft ) velocity.x -= 15000.0 * delta / 10;
-  if ( moveRight ) velocity.x += 15000.0 * delta / 10;
-
-  controls.getObject().translateX( velocity.x * delta);
-  controls.getObject().translateZ( velocity.z * delta);
+  controls.getObject().translateX( velocity.x * delta );
+  controls.getObject().translateZ( velocity.z * delta );
 
   renderer.clear();
 
-  let glContext = renderer.domElement.getContext( 'webgl' );
-  glContext.colorMask(true, true, true, true);
-  
-  switch (renderingMethod) {
-  case RENDERING_MODE.NORMAL :
-    renderer.render(scene, camera);
-    break;
-  case RENDERING_MODE.ANAGLYPH :
-    anaglyphRenderer.render(scene, camera);
-    break;
-  case RENDERING_MODE.ANA_LEFT :
-    anaglyphRenderer.renderLeft(scene, camera);
-    break;
-  case RENDERING_MODE.ANA_RIGHT :
-    anaglyphRenderer.renderRight(scene, camera);
-    break;
-  case RENDERING_MODE.BLUR :
-    dofRenderer.render(scene, camera);
-    break;
-  case RENDERING_MODE.ANA_BLUR :
-    anaglyphRenderer.renderBlur(scene, camera);
-    break;
-  }
-  
+  stereoRenderer.render( scene, camera );
+
   if(pointerLocked) {
     renderer.clearDepth();
     renderer.render( sceneOrtho, cameraOrtho );

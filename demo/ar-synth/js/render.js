@@ -3,8 +3,10 @@ var canvas, context, imageData, imageDst;
 var renderer;
 
 var audioContext;
-var gain;
-var oscillator;
+var gain1;
+var gain2;
+var oscillator1;
+var oscillator2;
 
 var maxFreq = 880;
 var maxGain = 1;
@@ -53,17 +55,26 @@ function init() {
 
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-  oscillator = audioContext.createOscillator();
-  gain = audioContext.createGain();
+  oscillator1 = audioContext.createOscillator();
+  oscillator2 = audioContext.createOscillator();
+  gain1 = audioContext.createGain();
+  gain2 = audioContext.createGain();
 
-  oscillator.connect(gain);
-  gain.connect(audioContext.destination);
+  oscillator1.connect(gain1);
+  oscillator2.connect(gain2);
+  gain1.connect(audioContext.destination);
+  gain2.connect(audioContext.destination);
 
-  oscillator.type = 'sine'; // onde sinusoïdale — les autres valeurs possible sont : 'square', 'sawtooth', 'triangle' et 'custom'
-  oscillator.frequency.value = startFreq; // valeur en hertz
-  gain.gain.value = startGain;
+  oscillator1.type = 'sine'; // onde sinusoïdale — les autres valeurs possible sont : 'square', 'sawtooth', 'triangle' et 'custom'
+  oscillator1.frequency.value = startFreq; // valeur en hertz
 
-  oscillator.start();
+  oscillator2.type = 'triangle'; // onde sinusoïdale — les autres valeurs possible sont : 'square', 'sawtooth', 'triangle' et 'custom'
+  oscillator2.frequency.value = 0; // valeur en hertz
+  gain1.gain.value = 0;
+  gain2.gain.value = 0;
+
+  oscillator1.start();
+  oscillator2.start();
   
   // WEBGL THINGS
   canvas = document.getElementById("canvas");
@@ -148,13 +159,16 @@ function animate() {
 	context.stroke();
 
 
-	oscillator.frequency.value = (circle.center.x/params.width) * maxFreq;
-	gain.gain.value = (circle.center.y/params.height) * maxGain;
+	oscillator1.frequency.value = (circle.center.x/params.width) * maxFreq;
+	oscillator2.frequency.value = Math.abs(circle.radius);
+	gain1.gain.value = (circle.center.y/params.height) * maxGain;
+	gain2.gain.value = 1 - gain1.gain.value;
       }
 
       
     } else {
-      gain.gain.value = 0;
+      gain1.gain.value = 0;
+      gain2.gain.value = 0;
       imageDst.data.set(imageData.data);
     }
 

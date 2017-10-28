@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>RVRA TD4</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+
+	<body>
+
+		<!-- external libraries -->
+		<script src="js/libs/three.min.js"></script>
+		<script src="js/libs/Detector.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+		<script src='js/libs/dat.gui.min.js'></script>
+		<script src='js/libs/PointerLockControls.js'></script>
+		<script src='js/libs/DeviceOrientationControls.js'></script>
+		<script src='js/libs/lockPointer.js'></script>
+
+		<!-- internal scripts -->
+		<script src="js/render.js"></script>
+		<script src="js/displayParameters.js"></script>
+		<script src="js/stereoRenderer.js"></script>
+		<script src="js/utils.js"></script>
+
+		<script>
+
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+			testExp = new RegExp('Android|webOS|iPhone|iPad|' + 'BlackBerry|Windows Phone|'  + 'Opera Mini|IEMobile|Mobile' , 'i');
+  
+  		if (testExp.test(navigator.userAgent)) {
+				pointerLocked = true;
+			} else {
+				lockPointer();
+			}
+
+			init();
+
+			animate();
+
+		</script>
+
+	</body>
+</html>
