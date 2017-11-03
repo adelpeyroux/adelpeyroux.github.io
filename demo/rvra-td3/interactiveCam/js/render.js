@@ -349,16 +349,14 @@ function render() {
     
     let d = - VECTOR3.dot(vn, va);
     
-    let l = -(window.innerWidth/2 - pe.x)* near / d;
-    let r = (window.innerWidth/2 + pe.x) * near / d;
-    let b = -(window.innerHeight/2 - pe.y) * near / d;
-    let t = (window.innerHeight/2 - pe.y) * near / d;
+    let l = VECTOR3.dot(vr, va) * near / d;
+    let r = VECTOR3.dot(vr, vb) * near / d;
+    let b = VECTOR3.dot(vu, va) * near / d;
+    let t = VECTOR3.dot(vu, vc) * near / d;
 
-    //*
-    
     let new_proj_matrix = new THREE.Matrix4()
 	.makePerspective(l,r,t,b,near, 10000);
-    /*
+    //*
     let MT = new THREE.Matrix4().set(vr.x, vu.x, vn.x, 0,
 				    vr.y, vu.y, vn.y, 0,
 				    vr.z, vu.z, vn.z, 0,
@@ -367,18 +365,10 @@ function render() {
     new_proj_matrix.multiplyMatrices(new_proj_matrix, MT);
     new_proj_matrix.multiplyMatrices(new_proj_matrix, new THREE.Matrix4().makeTranslation(-pe.x, -pe.y, -pe.z));
 
-*/
+    //*/
     camera.projectionMatrix = new_proj_matrix;
   }
 
-  /*/
-  camera.left = l;
-  camera.right = r;
-  camera.top = t;
-  camera.bottom = b;
-  camera.updateProjectionMatrix();
-  //*/
-  //camera.position = pe;
   
   
   velocity.x -= velocity.x * 100.0 * delta / 10;
